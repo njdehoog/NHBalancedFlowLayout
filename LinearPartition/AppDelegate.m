@@ -7,12 +7,16 @@
 //
 
 #import "AppDelegate.h"
+#import "LinearPartition.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    NSArray *sequence = @[@9,@2,@6,@3,@8,@5,@8,@1,@7,@3,@4];
+    NSArray *partition = [LinearPartition linearPartitionForSequence:sequence numberOfPartitions:3];
+    NSLog(@"partition: %@", partition);
+    
     return YES;
 }
 							

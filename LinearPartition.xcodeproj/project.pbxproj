@@ -21,6 +21,7 @@
 		50CAF4E9180430A6009A7FA1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50CAF4CB180430A6009A7FA1 /* UIKit.framework */; };
 		50CAF4F1180430A6009A7FA1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 50CAF4EF180430A6009A7FA1 /* InfoPlist.strings */; };
 		50CAF4F3180430A6009A7FA1 /* LinearPartitionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 50CAF4F2180430A6009A7FA1 /* LinearPartitionTests.m */; };
+		50CAF4FF180430F5009A7FA1 /* LinearPartition.m in Sources */ = {isa = PBXBuildFile; fileRef = 50CAF4FE180430F5009A7FA1 /* LinearPartition.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 		50CAF4EE180430A6009A7FA1 /* LinearPartitionTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LinearPartitionTests-Info.plist"; sourceTree = "<group>"; };
 		50CAF4F0180430A6009A7FA1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		50CAF4F2180430A6009A7FA1 /* LinearPartitionTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LinearPartitionTests.m; sourceTree = "<group>"; };
+		50CAF4FD180430F5009A7FA1 /* LinearPartition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinearPartition.h; sourceTree = "<group>"; };
+		50CAF4FE180430F5009A7FA1 /* LinearPartition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinearPartition.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +122,8 @@
 				50CAF4DD180430A6009A7FA1 /* ViewController.m */,
 				50CAF4DF180430A6009A7FA1 /* Images.xcassets */,
 				50CAF4CE180430A6009A7FA1 /* Supporting Files */,
+				50CAF4FD180430F5009A7FA1 /* LinearPartition.h */,
+				50CAF4FE180430F5009A7FA1 /* LinearPartition.m */,
 			);
 			path = LinearPartition;
 			sourceTree = "<group>";
@@ -250,6 +255,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				50CAF4DE180430A6009A7FA1 /* ViewController.m in Sources */,
+				50CAF4FF180430F5009A7FA1 /* LinearPartition.m in Sources */,
 				50CAF4D8180430A6009A7FA1 /* AppDelegate.m in Sources */,
 				50CAF4D4180430A6009A7FA1 /* main.m in Sources */,
 			);
@@ -383,6 +389,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LinearPartition/LinearPartition-Prefix.pch";
 				INFOPLIST_FILE = "LinearPartition/LinearPartition-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -396,6 +403,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LinearPartition/LinearPartition-Prefix.pch";
 				INFOPLIST_FILE = "LinearPartition/LinearPartition-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -462,6 +470,7 @@
 				50CAF4F8180430A6009A7FA1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		50CAF4F9180430A6009A7FA1 /* Build configuration list for PBXNativeTarget "LinearPartitionTests" */ = {
 			isa = XCConfigurationList;
@@ -470,6 +479,7 @@
 				50CAF4FB180430A6009A7FA1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
