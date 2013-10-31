@@ -8,6 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ * Partitions a sequence of non-negative integers into the required number of partitions.
+ * Based on implementation in Python by Óscar López: http://stackoverflow.com/a/7942946
+ * Example: [LinearPartition linearPartitionForSequence:@[9,2,6,3,8,5,8,1,7,3,4] numberOfPartitions:3] => @[@[9,2,6,3],@[8,5,8],@[1,7,3,4]]
+ */
 @interface LinearPartition : NSObject
 
 + (NSArray *)linearPartitionForSequence:(NSArray *)sequence numberOfPartitions:(NSInteger)numberOfPartitions;
