@@ -42,7 +42,6 @@
 {
     self.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
     self.minimumLineSpacing = 10;
-//    self.minimumInteritemSpacing = 10;
 }
 
 - (void)prepareLayout
@@ -107,63 +106,19 @@
     return [[self.itemSizes objectAtIndex:indexPath.item] CGSizeValue];
 }
 
-//- (NSArray *)layoutAttributesForElementsInRect:(CGRect)rect
-//{
-//    NSArray *items =  [super layoutAttributesForElementsInRect:rect];
-//    for (UICollectionViewLayoutAttributes *attributes in items) {
-//        attributes.size = [[self.itemSizes objectAtIndex:attributes.indexPath.item] CGSizeValue];
-//    }
-//    
-//    return items;
-//    
-//    
-////    NSArray *items =  [super layoutAttributesForElementsInRect:rect];
-////    
-////    CGFloat viewportWidth = CGRectGetWidth(rect);
-////    CGFloat idealHeight = CGRectGetHeight(rect) / 2.0;
-////    
-////    CGFloat totalImageWidth = 0;
-////    for (UICollectionViewLayoutAttributes *attributes in items) {
-////        totalImageWidth += (attributes.size.width / attributes.size.height) * idealHeight;
-////    }
-////
-////    NSInteger numberOfRows = roundf(totalImageWidth / viewportWidth);
-////    
-////    
-////    if (numberOfRows < 1) {
-////        for (UICollectionViewLayoutAttributes *attributes in items) {
-////            attributes.size = CGSizeMake(roundf((attributes.size.width / attributes.size.height) * idealHeight), roundf(idealHeight));
-////        }
-////    }
-////    else {
-////        NSMutableArray *weights = [NSMutableArray array];
-////        for (UICollectionViewLayoutAttributes *attributes in items) {
-////            NSInteger aspectRatio = roundf((attributes.size.width / attributes.size.height) * 100);
-////            [weights addObject:@(aspectRatio)];
-////        }
-////        
-////        NSArray *partition = [LinearPartition linearPartitionForSequence:weights numberOfPartitions:numberOfRows];
-////        
-////        int i = 0;
-////        for (NSArray *row in partition) {
-////            
-////            NSMutableArray *itemsInRow = [NSMutableArray array];
-////            for (NSNumber *weight in row) {
-////                [itemsInRow addObject:items[i++]];
-////            }
-////            
-////            CGFloat summedRatios = 0;
-////            for (UICollectionViewLayoutAttributes *attributes in itemsInRow) {
-////                summedRatios += attributes.size.width / attributes.size.height;
-////            }
-////            
-////            for (UICollectionViewLayoutAttributes *attributes in itemsInRow) {
-////                attributes.size = CGSizeMake(roundf(viewportWidth / summedRatios * (attributes.size.width / attributes.size.height)), roundf(viewportWidth / summedRatios));
-////            }
-////        }
-////    }
-////    
-////    return items;
-//}
+- (NSArray *)layoutAttributesForElementsInRect:(CGRect)rect
+{
+    NSArray *items = [super layoutAttributesForElementsInRect:rect];
+    for (UICollectionViewLayoutAttributes *attributes in items) {
+//        attributes.size = [self sizeForItemAtIndexPath:attributes.indexPath];
+    }
+    
+    return items;
+}
+
+- (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return [super layoutAttributesForItemAtIndexPath:indexPath];
+}
 
 @end
