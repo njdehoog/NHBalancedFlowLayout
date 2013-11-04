@@ -11,9 +11,8 @@
 
 @interface BalancedFlowLayout ()
 
-@property (nonatomic) NSUInteger numberOfRows;
-
-@property (nonatomic, strong) NSArray *itemSizes;
+@property (nonatomic) CGSize contentSize;
+@property (nonatomic, strong) NSArray *itemFrames;
 
 @end
 
@@ -40,8 +39,8 @@
 
 - (void)initialize
 {
-    self.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
-    self.minimumLineSpacing = 10;
+//    self.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
+//    self.minimumLineSpacing = 10;
 }
 
 - (void)prepareLayout
@@ -50,8 +49,7 @@
     id<BalancedFlowLayoutDelegate> delegate = (id<BalancedFlowLayoutDelegate>)self.collectionView.delegate;
     
     CGFloat viewportWidth = CGRectGetWidth(self.collectionView.bounds) - self.sectionInset.left - self.sectionInset.right;
-    CGFloat idealHeight = CGRectGetHeight(self.collectionView.bounds) / 2.0;
-    self.preferredRowHeight = idealHeight;
+    CGFloat idealHeight = self.preferredRowHeight > 0 ?: CGRectGetHeight(self.collectionView.bounds) / 2.0;
     
     CGFloat totalImageWidth = 0;
     for (int i = 0, n = [self.collectionView numberOfItemsInSection:0]; i < n; i++) {
@@ -59,14 +57,15 @@
         totalImageWidth += (preferredSize.width / preferredSize.height) * idealHeight;
     }
     
-    self.numberOfRows = roundf(totalImageWidth / viewportWidth);
+    NSInteger numberOfRows = roundf(totalImageWidth / viewportWidth);
     
-    NSMutableArray *itemSizes = [NSMutableArray array];
-    if (self.numberOfRows < 1) {
+    NSMutableArray *itemFrames = [NSMutableArray array];
+    if (numberOfRows < 1) {
         for (int i = 0, n = [self.collectionView numberOfItemsInSection:0]; i < n; i++) {
-            CGSize preferredSize = [delegate collectionView:self.collectionView layout:self preferredSizeForItemAtIndexPath:[NSIndexPath indexPathForItem:i inSection:0]];
-            CGSize actualSize = CGSizeMake(roundf((preferredSize.width / preferredSize.height) * self.preferredRowHeight), roundf(self.preferredRowHeight));
-            [itemSizes addObject:[NSValue valueWithCGSize:actualSize]];
+//            CGSize preferredSize = [delegate collectionView:self.collectionView layout:self preferredSizeForItemAtIndexPath:[NSIndexPath indexPathForItem:i inSection:0]];
+//            CGSize actualSize = CGSizeMake(roundf((preferredSize.width / preferredSize.height) * self.preferredRowHeight), roundf(self.preferredRowHeight));
+            
+            // TODO: implement this branch
         }
     }
     else {
@@ -77,11 +76,14 @@
             [weights addObject:@(aspectRatio)];
         }
         
-        NSArray *partition = [LinearPartition linearPartitionForSequence:weights numberOfPartitions:self.numberOfRows];
+        NSArray *partition = [LinearPartition linearPartitionForSequence:weights numberOfPartitions:numberOfRows];
         
         int i = 0;
+        CGPoint offset = CGPointZero;
+        CGFloat previousItemHeight = 0;
+        CGFloat contentHeight = 0;
         for (NSArray *row in partition) {
-            
+  
             CGFloat summedRatios = 0;
             for (int j = i, n = i + [row count]; j < n; j++) {
                 CGSize preferredSize = [delegate collectionView:self.collectionView layout:self preferredSizeForItemAtIndexPath:[NSIndexPath indexPathForItem:j inSection:0]];
@@ -91,34 +93,71 @@
             for (int j = i, n = i + [row count]; j < n; j++) {
                 CGSize preferredSize = [delegate collectionView:self.collectionView layout:self preferredSizeForItemAtIndexPath:[NSIndexPath indexPathForItem:j inSection:0]];
                 CGSize actualSize = CGSizeMake(roundf(viewportWidth / summedRatios * (preferredSize.width / preferredSize.height)), roundf(viewportWidth / summedRatios));
-                [itemSizes addObject:[NSValue valueWithCGSize:actualSize]];
+                
+                // move to next line
+                if (offset.x + actualSize.width > viewportWidth) {
+                    offset = CGPointMake(0, offset.y + previousItemHeight);
+                }
+                
+                CGRect frame = CGRectMake(offset.x, offset.y, actualSize.width, actualSize.height);
+                [itemFrames addObject:[NSValue valueWithCGRect:frame]];
+                
+                offset.x += actualSize.width;
+                previousItemHeight = actualSize.height;
+                contentHeight = CGRectGetMaxY(frame);
             }
             
             i += [row count];
         }
+        
+        self.contentSize = CGSizeMake(CGRectGetWidth(self.collectionView.bounds), contentHeight);
     }
     
-    self.itemSizes = [itemSizes copy];
+    self.itemFrames = [itemFrames copy];
+    
 }
 
-- (CGSize)sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+- (CGSize)collectionViewContentSize
 {
-    return [[self.itemSizes objectAtIndex:indexPath.item] CGSizeValue];
+    return self.contentSize;
 }
 
 - (NSArray *)layoutAttributesForElementsInRect:(CGRect)rect
 {
-    NSArray *items = [super layoutAttributesForElementsInRect:rect];
-    for (UICollectionViewLayoutAttributes *attributes in items) {
-//        attributes.size = [self sizeForItemAtIndexPath:attributes.indexPath];
+    NSMutableArray *layoutAttributes = [NSMutableArray array];
+    
+    NSArray *visibleIndexPaths = [self indexPathsForItemsInRect:rect];
+    for (NSIndexPath *indexPath in visibleIndexPaths) {
+        [layoutAttributes addObject:[self layoutAttributesForItemAtIndexPath:indexPath]];
     }
     
-    return items;
+    return layoutAttributes;
 }
 
 - (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [super layoutAttributesForItemAtIndexPath:indexPath];
+    UICollectionViewLayoutAttributes *attributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
+    attributes.frame = [[self.itemFrames objectAtIndex:indexPath.item] CGRectValue];
+    
+    return attributes;
+}
+
+- (NSArray *)indexPathsForItemsInRect:(CGRect)rect
+{
+    NSMutableArray *indexPaths = [NSMutableArray array];
+    for (int i = 0; i < [self.collectionView numberOfItemsInSection:0]; i++) {
+        [indexPaths addObject:[NSIndexPath indexPathForItem:i inSection:0]];
+    }
+    return [indexPaths copy];
+}
+
+#pragma mark - Custom setters
+
+- (void)setPreferredRowHeight:(CGFloat)preferredRowHeight
+{
+    _preferredRowHeight = preferredRowHeight;
+    
+    [self invalidateLayout];
 }
 
 @end

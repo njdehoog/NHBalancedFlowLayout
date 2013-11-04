@@ -10,10 +10,7 @@
 
 @interface BalancedFlowLayout : UICollectionViewFlowLayout
 
-// TODO: implement this
 @property (nonatomic) CGFloat preferredRowHeight;
-
-- (CGSize)sizeForItemAtIndexPath:(NSIndexPath *)indexPath;
 
 @end
 

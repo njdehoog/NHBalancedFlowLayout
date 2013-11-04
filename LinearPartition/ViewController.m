@@ -17,7 +17,6 @@
 @interface ViewController () <BalancedFlowLayoutDelegate>
 
 @property (nonatomic, strong) NSArray *images;
-
 @property (nonatomic, strong) NSArray *itemSizes;
 
 @end
@@ -40,6 +39,13 @@
     return self;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+//    [(BalancedFlowLayout *)self.collectionView.collectionViewLayout setPreferredRowHeight:CGRectGetHeight(self.collectionView.bounds) / 2.0];
+}
+
 #pragma mark - UICollectionViewFlowLayoutDelegate
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(BalancedFlowLayout *)collectionViewLayout preferredSizeForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -47,10 +53,10 @@
     return [[self.images objectAtIndex:indexPath.item] size];
 }
 
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(BalancedFlowLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    return [collectionViewLayout sizeForItemAtIndexPath:indexPath];
-}
+//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(BalancedFlowLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    return [collectionViewLayout sizeForItemAtIndexPath:indexPath];
+//}
 
 #pragma mark - UICollectionView data source
 
