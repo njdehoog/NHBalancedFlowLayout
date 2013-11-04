@@ -30,6 +30,9 @@
 // The minimum spacing to use between items in the same row.
 @property (nonatomic) CGFloat minimumInteritemSpacing;
 
+// The scroll direction of the grid.
+@property (nonatomic) UICollectionViewScrollDirection scrollDirection;
+
 @end
 
 
