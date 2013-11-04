@@ -50,7 +50,7 @@
     id<BalancedFlowLayoutDelegate> delegate = (id<BalancedFlowLayoutDelegate>)self.collectionView.delegate;
     
     CGFloat viewportWidth = CGRectGetWidth(self.collectionView.bounds) - self.sectionInset.left - self.sectionInset.right;
-    CGFloat idealHeight = self.preferredRowHeight > 0 ?: CGRectGetHeight(self.collectionView.bounds) / 4.0;
+    CGFloat idealHeight = self.preferredRowHeight > 0 ?: CGRectGetHeight(self.collectionView.bounds) / 3.0;
     
     CGFloat totalImageWidth = 0;
     for (int i = 0, n = [self.collectionView numberOfItemsInSection:0]; i < n; i++) {

@@ -12,7 +12,7 @@
 #import "UIImage+Decompression.h"
 #import "BalancedFlowLayout.h"
 
-#define NUMBER_OF_IMAGES 24
+#define NUMBER_OF_IMAGES 27
 
 @interface ViewController () <BalancedFlowLayoutDelegate>
 
