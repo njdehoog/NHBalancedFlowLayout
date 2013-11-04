@@ -25,6 +25,10 @@
         return [partition copy];
     }
     
+    if (n == 1) {
+        return @[sequence];
+    }
+    
     NSMutableArray *table = [NSMutableArray array];
     NSMutableArray *solution = [NSMutableArray array];
     for (int i = 0; i < n; i++) {

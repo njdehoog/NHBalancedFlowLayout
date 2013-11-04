@@ -12,7 +12,7 @@
 #import "UIImage+Decompression.h"
 #import "BalancedFlowLayout.h"
 
-#define NUMBER_OF_IMAGES 27
+#define NUMBER_OF_IMAGES 24
 
 @interface ViewController () <BalancedFlowLayoutDelegate>
 
@@ -37,13 +37,6 @@
     }
     
     return self;
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
-//    [(BalancedFlowLayout *)self.collectionView.collectionViewLayout setPreferredRowHeight:CGRectGetHeight(self.collectionView.bounds) / 2.0];
 }
 
 #pragma mark - UICollectionViewFlowLayoutDelegate
