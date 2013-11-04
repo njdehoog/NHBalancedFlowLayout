@@ -13,6 +13,7 @@
  * It takes the preferred sizes for the displayed items and a preferred row height as input to determine the optimal layout.
  *
  * In order to use this layout, the delegate for the collection view must implement the required methods in the BalancedFlowLayoutDelegate protocol.
+ * Currently this class does not support supplementary or decoration views.
  *
  */
 @interface BalancedFlowLayout : UICollectionViewLayout

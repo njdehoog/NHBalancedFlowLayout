@@ -18,6 +18,8 @@
 
 @implementation BalancedFlowLayout
 
+#pragma mark - Lifecycle
+
 - (id)init
 {
     self = [super init];
@@ -43,6 +45,8 @@
     self.minimumLineSpacing = 10;
     self.minimumInteritemSpacing = 10;
 }
+
+#pragma mark - Layout
 
 - (void)prepareLayout
 {
@@ -135,9 +139,21 @@
 {
     NSMutableArray *indexPaths = [NSMutableArray array];
     for (int i = 0; i < [self.collectionView numberOfItemsInSection:0]; i++) {
-        [indexPaths addObject:[NSIndexPath indexPathForItem:i inSection:0]];
+        if (CGRectIntersectsRect(rect, [[self.itemFrames objectAtIndex:i] CGRectValue])) {
+            [indexPaths addObject:[NSIndexPath indexPathForItem:i inSection:0]];
+        }
     }
     return [indexPaths copy];
+}
+
+- (BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds
+{
+    CGRect oldBounds = self.collectionView.bounds;
+    if (CGRectGetWidth(newBounds) != CGRectGetWidth(oldBounds)) {
+        return YES;
+    }
+    
+    return NO;
 }
 
 #pragma mark - Custom setters
@@ -145,6 +161,27 @@
 - (void)setPreferredRowHeight:(CGFloat)preferredRowHeight
 {
     _preferredRowHeight = preferredRowHeight;
+    
+    [self invalidateLayout];
+}
+
+- (void)setSectionInset:(UIEdgeInsets)sectionInset
+{
+    _sectionInset = sectionInset;
+    
+    [self invalidateLayout];
+}
+
+- (void)setMinimumLineSpacing:(CGFloat)minimumLineSpacing
+{
+    _minimumLineSpacing = minimumLineSpacing;
+    
+    [self invalidateLayout];
+}
+
+- (void)setMinimumInteritemSpacing:(CGFloat)minimumInteritemSpacing
+{
+    _minimumInteritemSpacing = minimumInteritemSpacing;
     
     [self invalidateLayout];
 }
