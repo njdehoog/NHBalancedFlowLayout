@@ -56,12 +56,23 @@
     
     CGFloat idealHeight = self.preferredRowHeight > 0 ?: CGRectGetHeight(self.collectionView.bounds) / 3.0;
     
-    CGFloat totalItemWidth = [self totalItemWidthForSection:0 preferredRowHeight:idealHeight];
-    NSInteger numberOfRows = MAX(roundf(totalItemWidth / [self viewPortWidth]), 1);
+    NSMutableArray *itemFrames = [NSMutableArray array];
+    CGSize contentSize = CGSizeZero;
+    for (int section = 0; section < [self.collectionView numberOfSections]; section++) {
+        CGSize sectionSize = CGSizeZero;
+        
+        CGFloat totalItemWidth = [self totalItemWidthForSection:section preferredRowHeight:idealHeight];
+        NSInteger numberOfRows = MAX(roundf(totalItemWidth / [self viewPortWidth]), 1);
     
-    CGSize sectionSize = CGSizeZero;
-    self.itemFrames = [self framesForItemsInSection:0 numberOfRows:numberOfRows sectionSize:&sectionSize];
-    self.contentSize = sectionSize;
+        NSArray *framesForSection = [self framesForItemsInSection:section numberOfRows:numberOfRows sectionOffset:CGPointMake(0, contentSize.height) sectionSize:&sectionSize];
+        [itemFrames addObject:framesForSection];
+        
+        contentSize = CGSizeMake(sectionSize.width, contentSize.height + sectionSize.height);
+    }
+    
+    self.itemFrames = [itemFrames copy];
+    
+    self.contentSize = contentSize;
 }
 
 - (CGSize)collectionViewContentSize
@@ -84,7 +95,7 @@
 - (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionViewLayoutAttributes *attributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
-    attributes.frame = [[self.itemFrames objectAtIndex:indexPath.item] CGRectValue];
+    attributes.frame = [self itemFrameForIndexPath:indexPath];
     
     return attributes;
 }
@@ -103,16 +114,22 @@
 
 - (NSArray *)indexPathsForItemsInRect:(CGRect)rect
 {
-    // TODO: add support for sections
     NSMutableArray *indexPaths = [NSMutableArray array];
-
-    
-    for (int i = 0; i < [self.collectionView numberOfItemsInSection:0]; i++) {
-        if (CGRectIntersectsRect(rect, [[self.itemFrames objectAtIndex:i] CGRectValue])) {
-            [indexPaths addObject:[NSIndexPath indexPathForItem:i inSection:0]];
+    for (int section = 0, n = [self.collectionView numberOfSections]; section < n; section++) {
+        for (int i = 0; i < [self.collectionView numberOfItemsInSection:section]; i++) {
+            NSIndexPath *indexPath = [NSIndexPath indexPathForItem:i inSection:section];
+            if (CGRectIntersectsRect(rect, [self itemFrameForIndexPath:indexPath])) {
+                [indexPaths addObject:indexPath];
+            }
         }
     }
+    
     return [indexPaths copy];
+}
+
+- (CGRect)itemFrameForIndexPath:(NSIndexPath *)indexPath
+{
+    return [[[self.itemFrames objectAtIndex:indexPath.section] objectAtIndex:indexPath.item] CGRectValue];
 }
 
 - (CGFloat)totalItemWidthForSection:(NSInteger)section preferredRowHeight:(CGFloat)preferredRowHeight
@@ -138,7 +155,7 @@
     return [weights copy];
 }
 
-- (NSArray *)framesForItemsInSection:(NSInteger)section numberOfRows:(NSUInteger)numberOfRows sectionSize:(CGSize *)sectionSize
+- (NSArray *)framesForItemsInSection:(NSInteger)section numberOfRows:(NSUInteger)numberOfRows sectionOffset:(CGPoint)sectionOffset sectionSize:(CGSize *)sectionSize
 {
     NSMutableArray *itemFrames = [NSMutableArray array];
 
@@ -146,9 +163,9 @@
     NSArray *partition = [LinearPartition linearPartitionForSequence:weights numberOfPartitions:numberOfRows];
     
     int i = 0;
-    CGPoint offset = CGPointMake(self.sectionInset.left, self.sectionInset.top);
+    CGPoint offset = CGPointMake(sectionOffset.x + self.sectionInset.left, sectionOffset.y + self.sectionInset.top);
     CGFloat previousItemHeight = 0;
-    CGFloat contentHeight = 0;
+    CGFloat contentMaxY = 0;
     for (NSArray *row in partition) {
         
         CGFloat summedRatios = 0;
@@ -167,7 +184,7 @@
             
             offset.x += actualSize.width + self.minimumInteritemSpacing;
             previousItemHeight = actualSize.height;
-            contentHeight = CGRectGetMaxY(frame);
+            contentMaxY = CGRectGetMaxY(frame);
         }
         
         // move offset to next line
@@ -176,7 +193,7 @@
         i += [row count];
     }
     
-    *sectionSize = CGSizeMake(CGRectGetWidth(self.collectionView.bounds), contentHeight + self.sectionInset.bottom);
+    *sectionSize = CGSizeMake(CGRectGetWidth(self.collectionView.bounds), (contentMaxY - sectionOffset.y) + self.sectionInset.bottom);
     
     return [itemFrames copy];
 }
