@@ -12,7 +12,7 @@
 #import "UIImage+Decompression.h"
 #import "BalancedFlowLayout.h"
 
-#define NUMBER_OF_IMAGES 24
+#define NUMBER_OF_IMAGES 27
 
 @interface ViewController () <BalancedFlowLayoutDelegate>
 
@@ -52,11 +52,6 @@
 {
     return [[self.images objectAtIndex:indexPath.item] size];
 }
-
-//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(BalancedFlowLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    return [collectionViewLayout sizeForItemAtIndexPath:indexPath];
-//}
 
 #pragma mark - UICollectionView data source
 
