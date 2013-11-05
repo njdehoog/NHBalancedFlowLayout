@@ -44,7 +44,7 @@
     self.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
     self.minimumLineSpacing = 10;
     self.minimumInteritemSpacing = 10;
-    self.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    self.scrollDirection = UICollectionViewScrollDirectionVertical;
 }
 
 #pragma mark - Layout
@@ -71,8 +71,7 @@
         CGSize sectionSize = CGSizeZero;
         
         CGFloat totalItemSize = [self totalItemSizeForSection:section preferredRowSize:idealHeight];
-        CGFloat viewPortSize = self.scrollDirection == UICollectionViewScrollDirectionVertical ? [self viewPortWidth] : [self viewPortHeight];
-        NSInteger numberOfRows = MAX(roundf(totalItemSize / viewPortSize), 1);
+        NSInteger numberOfRows = MAX(roundf(totalItemSize / [self viewPortAvailableSize]), 1);
     
         CGPoint sectionOffset = self.scrollDirection == UICollectionViewScrollDirectionVertical ? CGPointMake(0, contentSize.height) : CGPointMake(contentSize.width, 0);
         NSArray *framesForSection = [self framesForItemsInSection:section numberOfRows:numberOfRows sectionOffset:sectionOffset sectionSize:&sectionSize];
@@ -119,7 +118,7 @@
 - (BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds
 {
     CGRect oldBounds = self.collectionView.bounds;
-    if (CGRectGetWidth(newBounds) != CGRectGetWidth(oldBounds)) {
+    if (CGRectGetWidth(newBounds) != CGRectGetWidth(oldBounds) || CGRectGetHeight(newBounds) != CGRectGetHeight(oldBounds)) {
         return YES;
     }
     
@@ -131,7 +130,7 @@
 - (NSArray *)indexPathsForItemsInRect:(CGRect)rect
 {
     NSMutableArray *indexPaths = [NSMutableArray array];
-    for (int section = 0, n = [self.collectionView numberOfSections]; section < n; section++) {
+    for (NSInteger section = 0, n = [self.collectionView numberOfSections]; section < n; section++) {
         for (int i = 0; i < [self.collectionView numberOfItemsInSection:section]; i++) {
             NSIndexPath *indexPath = [NSIndexPath indexPathForItem:i inSection:section];
             if (CGRectIntersectsRect(rect, [self itemFrameForIndexPath:indexPath])) {
@@ -151,7 +150,7 @@
 - (CGFloat)totalItemSizeForSection:(NSInteger)section preferredRowSize:(CGFloat)preferredRowSize
 {
     CGFloat totalItemSize = 0;
-    for (int i = 0, n = [self.collectionView numberOfItemsInSection:section]; i < n; i++) {
+    for (NSInteger i = 0, n = [self.collectionView numberOfItemsInSection:section]; i < n; i++) {
         CGSize preferredSize = [self.delegate collectionView:self.collectionView layout:self preferredSizeForItemAtIndexPath:[NSIndexPath indexPathForItem:i inSection:section]];
         
         if (self.scrollDirection == UICollectionViewScrollDirectionVertical) {
@@ -168,7 +167,7 @@
 - (NSArray *)weightsForItemsInSection:(NSInteger)section
 {
     NSMutableArray *weights = [NSMutableArray array];
-    for (int i = 0, n = [self.collectionView numberOfItemsInSection:section]; i < n; i++) {
+    for (NSInteger i = 0, n = [self.collectionView numberOfItemsInSection:section]; i < n; i++) {
         CGSize preferredSize = [self.delegate collectionView:self.collectionView layout:self preferredSizeForItemAtIndexPath:[NSIndexPath indexPathForItem:i inSection:section]];
         NSInteger aspectRatio = self.scrollDirection == UICollectionViewScrollDirectionVertical ? roundf((preferredSize.width / preferredSize.height) * 100) : roundf((preferredSize.height / preferredSize.width) * 100);
         [weights addObject:@(aspectRatio)];
@@ -191,7 +190,7 @@
     for (NSArray *row in partition) {
         
         CGFloat summedRatios = 0;
-        for (int j = i, n = i + [row count]; j < n; j++) {
+        for (NSInteger j = i, n = i + [row count]; j < n; j++) {
             CGSize preferredSize = [self.delegate collectionView:self.collectionView layout:self preferredSizeForItemAtIndexPath:[NSIndexPath indexPathForItem:j inSection:section]];
             
             if (self.scrollDirection == UICollectionViewScrollDirectionVertical) {
@@ -202,9 +201,8 @@
             }
         }
         
-        CGFloat viewPortSize = self.scrollDirection == UICollectionViewScrollDirectionVertical ? [self viewPortWidth] : [self viewPortHeight];
-        CGFloat rowSize = viewPortSize - (([row count] - 1) * self.minimumInteritemSpacing);
-        for (int j = i, n = i + [row count]; j < n; j++) {
+        CGFloat rowSize = [self viewPortAvailableSize] - (([row count] - 1) * self.minimumInteritemSpacing);
+        for (NSInteger j = i, n = i + [row count]; j < n; j++) {
             CGSize preferredSize = [self.delegate collectionView:self.collectionView layout:self preferredSizeForItemAtIndexPath:[NSIndexPath indexPathForItem:j inSection:section]];
             
             CGSize actualSize = CGSizeZero;
@@ -243,10 +241,10 @@
     }
     
     if (self.scrollDirection == UICollectionViewScrollDirectionVertical) {
-        *sectionSize = CGSizeMake(CGRectGetWidth(self.collectionView.bounds), (contentMaxValueInScrollDirection - sectionOffset.y) + self.sectionInset.bottom);
+        *sectionSize = CGSizeMake([self viewPortWidth], (contentMaxValueInScrollDirection - sectionOffset.y) + self.sectionInset.bottom);
     }
     else {
-        *sectionSize = CGSizeMake((contentMaxValueInScrollDirection - sectionOffset.x) + self.sectionInset.right, CGRectGetHeight(self.collectionView.bounds) - self.collectionView.contentInset.top - self.collectionView.contentInset.bottom);
+        *sectionSize = CGSizeMake((contentMaxValueInScrollDirection - sectionOffset.x) + self.sectionInset.right, [self viewPortHeight]);
     }
     
     return [itemFrames copy];
@@ -254,14 +252,25 @@
 
 - (CGFloat)viewPortWidth
 {
-    // TODO: should section insets be subtracted here?
-    return CGRectGetWidth(self.collectionView.frame) - self.sectionInset.left - self.sectionInset.right - self.collectionView.contentInset.left - self.collectionView.contentInset.right;
+    return CGRectGetWidth(self.collectionView.frame) - self.collectionView.contentInset.left - self.collectionView.contentInset.right;
 }
 
 - (CGFloat)viewPortHeight
 {
-    // TODO: should section insets be subtracted here?
-    return (CGRectGetHeight(self.collectionView.frame) - self.sectionInset.top - self.sectionInset.bottom - self.collectionView.contentInset.top  - self.collectionView.contentInset.bottom);
+    return (CGRectGetHeight(self.collectionView.frame) - self.collectionView.contentInset.top  - self.collectionView.contentInset.bottom);
+}
+
+- (CGFloat)viewPortAvailableSize
+{
+    CGFloat availableSize = 0;
+    if (self.scrollDirection == UICollectionViewScrollDirectionVertical) {
+        availableSize = [self viewPortWidth] - self.sectionInset.left - self.sectionInset.right;
+    }
+    else {
+        availableSize = [self viewPortHeight] - self.sectionInset.top - self.sectionInset.bottom;
+    }
+    
+    return availableSize;
 }
 
 #pragma mark - Custom setters
