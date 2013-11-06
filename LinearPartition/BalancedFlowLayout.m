@@ -84,7 +84,7 @@
             contentSize = CGSizeMake(contentSize.width + sectionSize.width, sectionSize.height);
         }
     }
-    NSLog(@"item frame: %@", itemFrames);
+    
     self.itemFrames = [itemFrames copy];
     
     self.contentSize = contentSize;
