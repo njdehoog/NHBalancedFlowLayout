@@ -62,22 +62,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		50CAF4C4180430A6009A7FA1 /* LinearPartition.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LinearPartition.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		50CAF4C4180430A6009A7FA1 /* BalancedFlowLayoutDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BalancedFlowLayoutDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50CAF4C7180430A6009A7FA1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		50CAF4C9180430A6009A7FA1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		50CAF4CB180430A6009A7FA1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		50CAF4CF180430A6009A7FA1 /* LinearPartition-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LinearPartition-Info.plist"; sourceTree = "<group>"; };
+		50CAF4CF180430A6009A7FA1 /* BalancedFlowLayoutDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BalancedFlowLayoutDemo-Info.plist"; sourceTree = "<group>"; };
 		50CAF4D1180430A6009A7FA1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		50CAF4D3180430A6009A7FA1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		50CAF4D5180430A6009A7FA1 /* LinearPartition-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LinearPartition-Prefix.pch"; sourceTree = "<group>"; };
+		50CAF4D5180430A6009A7FA1 /* BalancedFlowLayoutDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BalancedFlowLayoutDemo-Prefix.pch"; sourceTree = "<group>"; };
 		50CAF4D6180430A6009A7FA1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		50CAF4D7180430A6009A7FA1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		50CAF4DC180430A6009A7FA1 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		50CAF4DD180430A6009A7FA1 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		50CAF4DF180430A6009A7FA1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		50CAF4E5180430A6009A7FA1 /* LinearPartitionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LinearPartitionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		50CAF4E5180430A6009A7FA1 /* BalancedFlowLayoutDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BalancedFlowLayoutDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		50CAF4E6180430A6009A7FA1 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		50CAF4EE180430A6009A7FA1 /* LinearPartitionTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LinearPartitionTests-Info.plist"; sourceTree = "<group>"; };
+		50CAF4EE180430A6009A7FA1 /* BalancedFlowLayoutDemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BalancedFlowLayoutDemoTests-Info.plist"; sourceTree = "<group>"; };
 		50CAF4F0180430A6009A7FA1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		50CAF4F2180430A6009A7FA1 /* LinearPartitionTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LinearPartitionTests.m; sourceTree = "<group>"; };
 		50CAF4FD180430F5009A7FA1 /* LinearPartition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinearPartition.h; sourceTree = "<group>"; };
@@ -153,8 +153,8 @@
 		50CAF4C5180430A6009A7FA1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				50CAF4C4180430A6009A7FA1 /* LinearPartition.app */,
-				50CAF4E5180430A6009A7FA1 /* LinearPartitionTests.xctest */,
+				50CAF4C4180430A6009A7FA1 /* BalancedFlowLayoutDemo.app */,
+				50CAF4E5180430A6009A7FA1 /* BalancedFlowLayoutDemoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -195,10 +195,10 @@
 		50CAF4CE180430A6009A7FA1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				50CAF4CF180430A6009A7FA1 /* LinearPartition-Info.plist */,
+				50CAF4CF180430A6009A7FA1 /* BalancedFlowLayoutDemo-Info.plist */,
 				50CAF4D0180430A6009A7FA1 /* InfoPlist.strings */,
 				50CAF4D3180430A6009A7FA1 /* main.m */,
-				50CAF4D5180430A6009A7FA1 /* LinearPartition-Prefix.pch */,
+				50CAF4D5180430A6009A7FA1 /* BalancedFlowLayoutDemo-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -215,7 +215,7 @@
 		50CAF4ED180430A6009A7FA1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				50CAF4EE180430A6009A7FA1 /* LinearPartitionTests-Info.plist */,
+				50CAF4EE180430A6009A7FA1 /* BalancedFlowLayoutDemoTests-Info.plist */,
 				50CAF4EF180430A6009A7FA1 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -263,9 +263,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		50CAF4C3180430A6009A7FA1 /* LinearPartition */ = {
+		50CAF4C3180430A6009A7FA1 /* BalancedFlowLayoutDemo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 50CAF4F6180430A6009A7FA1 /* Build configuration list for PBXNativeTarget "LinearPartition" */;
+			buildConfigurationList = 50CAF4F6180430A6009A7FA1 /* Build configuration list for PBXNativeTarget "BalancedFlowLayoutDemo" */;
 			buildPhases = (
 				50CAF4C0180430A6009A7FA1 /* Sources */,
 				50CAF4C1180430A6009A7FA1 /* Frameworks */,
@@ -275,14 +275,14 @@
 			);
 			dependencies = (
 			);
-			name = LinearPartition;
+			name = BalancedFlowLayoutDemo;
 			productName = LinearPartition;
-			productReference = 50CAF4C4180430A6009A7FA1 /* LinearPartition.app */;
+			productReference = 50CAF4C4180430A6009A7FA1 /* BalancedFlowLayoutDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		50CAF4E4180430A6009A7FA1 /* LinearPartitionTests */ = {
+		50CAF4E4180430A6009A7FA1 /* BalancedFlowLayoutDemoTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 50CAF4F9180430A6009A7FA1 /* Build configuration list for PBXNativeTarget "LinearPartitionTests" */;
+			buildConfigurationList = 50CAF4F9180430A6009A7FA1 /* Build configuration list for PBXNativeTarget "BalancedFlowLayoutDemoTests" */;
 			buildPhases = (
 				50CAF4E1180430A6009A7FA1 /* Sources */,
 				50CAF4E2180430A6009A7FA1 /* Frameworks */,
@@ -293,9 +293,9 @@
 			dependencies = (
 				50CAF4EB180430A6009A7FA1 /* PBXTargetDependency */,
 			);
-			name = LinearPartitionTests;
+			name = BalancedFlowLayoutDemoTests;
 			productName = LinearPartitionTests;
-			productReference = 50CAF4E5180430A6009A7FA1 /* LinearPartitionTests.xctest */;
+			productReference = 50CAF4E5180430A6009A7FA1 /* BalancedFlowLayoutDemoTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -312,7 +312,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 50CAF4BF180430A6009A7FA1 /* Build configuration list for PBXProject "LinearPartition" */;
+			buildConfigurationList = 50CAF4BF180430A6009A7FA1 /* Build configuration list for PBXProject "BalancedFlowLayoutDemo" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -325,8 +325,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				50CAF4C3180430A6009A7FA1 /* LinearPartition */,
-				50CAF4E4180430A6009A7FA1 /* LinearPartitionTests */,
+				50CAF4C3180430A6009A7FA1 /* BalancedFlowLayoutDemo */,
+				50CAF4E4180430A6009A7FA1 /* BalancedFlowLayoutDemoTests */,
 			);
 		};
 /* End PBXProject section */
@@ -404,7 +404,7 @@
 /* Begin PBXTargetDependency section */
 		50CAF4EB180430A6009A7FA1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 50CAF4C3180430A6009A7FA1 /* LinearPartition */;
+			target = 50CAF4C3180430A6009A7FA1 /* BalancedFlowLayoutDemo */;
 			targetProxy = 50CAF4EA180430A6009A7FA1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -509,10 +509,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "LinearPartition/LinearPartition-Prefix.pch";
-				INFOPLIST_FILE = "LinearPartition/LinearPartition-Info.plist";
+				GCC_PREFIX_HEADER = "LinearPartition/BalancedFlowLayoutDemo-Prefix.pch";
+				INFOPLIST_FILE = "LinearPartition/BalancedFlowLayoutDemo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = BalancedFlowLayoutDemo;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -523,10 +523,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "LinearPartition/LinearPartition-Prefix.pch";
-				INFOPLIST_FILE = "LinearPartition/LinearPartition-Info.plist";
+				GCC_PREFIX_HEADER = "LinearPartition/BalancedFlowLayoutDemo-Prefix.pch";
+				INFOPLIST_FILE = "LinearPartition/BalancedFlowLayoutDemo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = BalancedFlowLayoutDemo;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -547,8 +547,8 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "LinearPartitionTests/LinearPartitionTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "LinearPartitionTests/BalancedFlowLayoutDemoTests-Info.plist";
+				PRODUCT_NAME = BalancedFlowLayoutDemoTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -566,8 +566,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LinearPartition/LinearPartition-Prefix.pch";
-				INFOPLIST_FILE = "LinearPartitionTests/LinearPartitionTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "LinearPartitionTests/BalancedFlowLayoutDemoTests-Info.plist";
+				PRODUCT_NAME = BalancedFlowLayoutDemoTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -576,7 +576,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		50CAF4BF180430A6009A7FA1 /* Build configuration list for PBXProject "LinearPartition" */ = {
+		50CAF4BF180430A6009A7FA1 /* Build configuration list for PBXProject "BalancedFlowLayoutDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				50CAF4F4180430A6009A7FA1 /* Debug */,
@@ -585,7 +585,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		50CAF4F6180430A6009A7FA1 /* Build configuration list for PBXNativeTarget "LinearPartition" */ = {
+		50CAF4F6180430A6009A7FA1 /* Build configuration list for PBXNativeTarget "BalancedFlowLayoutDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				50CAF4F7180430A6009A7FA1 /* Debug */,
@@ -594,7 +594,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		50CAF4F9180430A6009A7FA1 /* Build configuration list for PBXNativeTarget "LinearPartitionTests" */ = {
+		50CAF4F9180430A6009A7FA1 /* Build configuration list for PBXNativeTarget "BalancedFlowLayoutDemoTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				50CAF4FA180430A6009A7FA1 /* Debug */,
