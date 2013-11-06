@@ -12,7 +12,7 @@
 #import "UIImage+Decompression.h"
 #import "BalancedFlowLayout.h"
 
-#define NUMBER_OF_IMAGES 27
+#define NUMBER_OF_IMAGES 24
 
 @interface ViewController () <BalancedFlowLayoutDelegate>
 
@@ -66,12 +66,16 @@
     /**
      * Decompress image on background thread before displaying it to prevent lag
      */
+    NSInteger rowIndex = indexPath.row;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
         UIImage *image = [UIImage decodedImageWithImage:[self.images objectAtIndex:indexPath.item]];
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            cell.imageView.image = image;
+            NSIndexPath *currentIndexPathForCell = [collectionView indexPathForCell:cell];
+            if (currentIndexPathForCell.row == rowIndex) {
+                cell.imageView.image = image;
+            }
         });
     });
     

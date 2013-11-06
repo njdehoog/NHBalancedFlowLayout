@@ -48,9 +48,6 @@
 		FD9D1F99181FC08500F17457 /* photo-22.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD9D1F81181FC08500F17457 /* photo-22.jpg */; };
 		FD9D1F9A181FC08500F17457 /* photo-23.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD9D1F82181FC08500F17457 /* photo-23.jpg */; };
 		FD9D1F9B181FC08500F17457 /* photo-24.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD9D1F83181FC08500F17457 /* photo-24.jpg */; };
-		FDDD33961821866700314905 /* photo-25.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FDDD33931821866700314905 /* photo-25.jpg */; };
-		FDDD33971821866700314905 /* photo-26.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FDDD33941821866700314905 /* photo-26.jpg */; };
-		FDDD33981821866700314905 /* photo-27.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FDDD33951821866700314905 /* photo-27.jpg */; };
 		FDDD339B18218D6500314905 /* UIImage+Decompression.m in Sources */ = {isa = PBXBuildFile; fileRef = FDDD339A18218D6500314905 /* UIImage+Decompression.m */; };
 /* End PBXBuildFile section */
 
@@ -114,9 +111,6 @@
 		FD9D1F81181FC08500F17457 /* photo-22.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "photo-22.jpg"; sourceTree = "<group>"; };
 		FD9D1F82181FC08500F17457 /* photo-23.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "photo-23.jpg"; sourceTree = "<group>"; };
 		FD9D1F83181FC08500F17457 /* photo-24.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "photo-24.jpg"; sourceTree = "<group>"; };
-		FDDD33931821866700314905 /* photo-25.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "photo-25.jpg"; sourceTree = "<group>"; };
-		FDDD33941821866700314905 /* photo-26.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "photo-26.jpg"; sourceTree = "<group>"; };
-		FDDD33951821866700314905 /* photo-27.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "photo-27.jpg"; sourceTree = "<group>"; };
 		FDDD339918218D6500314905 /* UIImage+Decompression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Decompression.h"; sourceTree = "<group>"; };
 		FDDD339A18218D6500314905 /* UIImage+Decompression.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Decompression.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -262,9 +256,6 @@
 				FD9D1F81181FC08500F17457 /* photo-22.jpg */,
 				FD9D1F82181FC08500F17457 /* photo-23.jpg */,
 				FD9D1F83181FC08500F17457 /* photo-24.jpg */,
-				FDDD33931821866700314905 /* photo-25.jpg */,
-				FDDD33941821866700314905 /* photo-26.jpg */,
-				FDDD33951821866700314905 /* photo-27.jpg */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -358,7 +349,6 @@
 				FD9D1F89181FC08500F17457 /* photo-06.jpg in Resources */,
 				FD9D1F8B181FC08500F17457 /* photo-08.jpg in Resources */,
 				FD9D1F8C181FC08500F17457 /* photo-09.jpg in Resources */,
-				FDDD33981821866700314905 /* photo-27.jpg in Resources */,
 				FD9D1F9B181FC08500F17457 /* photo-24.jpg in Resources */,
 				FD9D1F91181FC08500F17457 /* photo-14.jpg in Resources */,
 				FD9D1F98181FC08500F17457 /* photo-21.jpg in Resources */,
@@ -371,10 +361,8 @@
 				FD9D1F94181FC08500F17457 /* photo-17.jpg in Resources */,
 				FD9D1F97181FC08500F17457 /* photo-20.jpg in Resources */,
 				FD9D1F95181FC08500F17457 /* photo-18.jpg in Resources */,
-				FDDD33961821866700314905 /* photo-25.jpg in Resources */,
 				FD9D1F99181FC08500F17457 /* photo-22.jpg in Resources */,
 				FD9D1F88181FC08500F17457 /* photo-05.jpg in Resources */,
-				FDDD33971821866700314905 /* photo-26.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
