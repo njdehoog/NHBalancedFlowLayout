@@ -53,7 +53,7 @@
 {
     [super prepareLayout];
     
-    NSAssert([self.delegate conformsToProtocol:@protocol(BalancedFlowLayoutDelegate)], @"UICollectionView delegate should conform to BalancedFlowLayout protocol");
+    NSAssert([self.delegate conformsToProtocol:@protocol(NHBalancedFlowLayoutDelegate)], @"UICollectionView delegate should conform to BalancedFlowLayout protocol");
     
     CGFloat idealHeight = self.preferredRowSize;
     if (idealHeight == 0) {
@@ -305,9 +305,9 @@
 
 #pragma mark - Delegate
 
-- (id<BalancedFlowLayoutDelegate>)delegate
+- (id<NHBalancedFlowLayoutDelegate>)delegate
 {
-    return (id<BalancedFlowLayoutDelegate>)self.collectionView.delegate;
+    return (id<NHBalancedFlowLayoutDelegate>)self.collectionView.delegate;
 }
 
 @end

@@ -36,7 +36,7 @@
 @end
 
 
-@protocol BalancedFlowLayoutDelegate <UICollectionViewDelegateFlowLayout>
+@protocol NHBalancedFlowLayoutDelegate <UICollectionViewDelegateFlowLayout>
 
 @required
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(NHBalancedFlowLayout *)collectionViewLayout preferredSizeForItemAtIndexPath:(NSIndexPath *)indexPath;

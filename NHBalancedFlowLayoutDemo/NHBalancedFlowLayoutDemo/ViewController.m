@@ -14,7 +14,7 @@
 
 #define NUMBER_OF_IMAGES 24
 
-@interface ViewController () <BalancedFlowLayoutDelegate>
+@interface ViewController () <NHBalancedFlowLayoutDelegate>
 
 @property (nonatomic, strong) NSArray *images;
 @property (nonatomic, strong) NSArray *itemSizes;
