@@ -1,23 +1,18 @@
 //
 //  AppDelegate.m
-//  LinearPartition
+//  BalancedFlowLayoutDemo
 //
 //  Created by Niels de Hoog on 08-10-13.
 //  Copyright (c) 2013 Niels de Hoog. All rights reserved.
 //
 
 #import "AppDelegate.h"
-#import "LinearPartition.h"
 #import "ViewController.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-//    NSArray *sequence = @[@9,@2,@6,@3,@8,@5,@8,@1,@7,@3,@4];
-//    NSArray *partition = [LinearPartition linearPartitionForSequence:sequence numberOfPartitions:3];
-//    NSLog(@"partition: %@", partition);
-    
+{    
     return YES;
 }
 							

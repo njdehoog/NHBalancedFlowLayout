@@ -1,6 +1,6 @@
 //
 //  UIImage+Decompression.m
-//  LinearPartition
+//  BalancedFlowLayoutDemo
 //
 //  Created by Niels de Hoog on 30/10/13.
 //  Copyright (c) 2013 Niels de Hoog. All rights reserved.

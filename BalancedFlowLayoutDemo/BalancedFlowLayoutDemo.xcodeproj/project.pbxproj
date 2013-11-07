@@ -20,8 +20,6 @@
 		50CAF4E9180430A6009A7FA1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50CAF4CB180430A6009A7FA1 /* UIKit.framework */; };
 		50CAF4F1180430A6009A7FA1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 50CAF4EF180430A6009A7FA1 /* InfoPlist.strings */; };
 		50CAF4F3180430A6009A7FA1 /* LinearPartitionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 50CAF4F2180430A6009A7FA1 /* LinearPartitionTests.m */; };
-		50CAF4FF180430F5009A7FA1 /* LinearPartition.m in Sources */ = {isa = PBXBuildFile; fileRef = 50CAF4FE180430F5009A7FA1 /* LinearPartition.m */; };
-		FD31C610182259F0003FDF6F /* BalancedFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = FD31C60F182259F0003FDF6F /* BalancedFlowLayout.m */; };
 		FD607149181E4C8B00593765 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD607148181E4C8B00593765 /* Main.storyboard */; };
 		FD9D1F69181FBFC600F17457 /* ImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FD9D1F68181FBFC600F17457 /* ImageCell.m */; };
 		FD9D1F84181FC08500F17457 /* photo-01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD9D1F6C181FC08500F17457 /* photo-01.jpg */; };
@@ -48,6 +46,8 @@
 		FD9D1F99181FC08500F17457 /* photo-22.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD9D1F81181FC08500F17457 /* photo-22.jpg */; };
 		FD9D1F9A181FC08500F17457 /* photo-23.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD9D1F82181FC08500F17457 /* photo-23.jpg */; };
 		FD9D1F9B181FC08500F17457 /* photo-24.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD9D1F83181FC08500F17457 /* photo-24.jpg */; };
+		FDC8070D182B84C600ADF578 /* BalancedFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC8070A182B84C600ADF578 /* BalancedFlowLayout.m */; };
+		FDC8070E182B84C600ADF578 /* LinearPartition.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC8070C182B84C600ADF578 /* LinearPartition.m */; };
 		FDDD339B18218D6500314905 /* UIImage+Decompression.m in Sources */ = {isa = PBXBuildFile; fileRef = FDDD339A18218D6500314905 /* UIImage+Decompression.m */; };
 /* End PBXBuildFile section */
 
@@ -80,10 +80,6 @@
 		50CAF4EE180430A6009A7FA1 /* BalancedFlowLayoutDemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BalancedFlowLayoutDemoTests-Info.plist"; sourceTree = "<group>"; };
 		50CAF4F0180430A6009A7FA1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		50CAF4F2180430A6009A7FA1 /* LinearPartitionTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LinearPartitionTests.m; sourceTree = "<group>"; };
-		50CAF4FD180430F5009A7FA1 /* LinearPartition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinearPartition.h; sourceTree = "<group>"; };
-		50CAF4FE180430F5009A7FA1 /* LinearPartition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinearPartition.m; sourceTree = "<group>"; };
-		FD31C60E182259F0003FDF6F /* BalancedFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BalancedFlowLayout.h; sourceTree = "<group>"; };
-		FD31C60F182259F0003FDF6F /* BalancedFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BalancedFlowLayout.m; sourceTree = "<group>"; };
 		FD607148181E4C8B00593765 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		FD9D1F67181FBFC600F17457 /* ImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCell.h; sourceTree = "<group>"; };
 		FD9D1F68181FBFC600F17457 /* ImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageCell.m; sourceTree = "<group>"; };
@@ -111,6 +107,10 @@
 		FD9D1F81181FC08500F17457 /* photo-22.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "photo-22.jpg"; sourceTree = "<group>"; };
 		FD9D1F82181FC08500F17457 /* photo-23.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "photo-23.jpg"; sourceTree = "<group>"; };
 		FD9D1F83181FC08500F17457 /* photo-24.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "photo-24.jpg"; sourceTree = "<group>"; };
+		FDC80709182B84C600ADF578 /* BalancedFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BalancedFlowLayout.h; sourceTree = "<group>"; };
+		FDC8070A182B84C600ADF578 /* BalancedFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BalancedFlowLayout.m; sourceTree = "<group>"; };
+		FDC8070B182B84C600ADF578 /* LinearPartition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinearPartition.h; sourceTree = "<group>"; };
+		FDC8070C182B84C600ADF578 /* LinearPartition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinearPartition.m; sourceTree = "<group>"; };
 		FDDD339918218D6500314905 /* UIImage+Decompression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Decompression.h"; sourceTree = "<group>"; };
 		FDDD339A18218D6500314905 /* UIImage+Decompression.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Decompression.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -142,9 +142,10 @@
 		50CAF4BB180430A6009A7FA1 = {
 			isa = PBXGroup;
 			children = (
-				50CAF4CD180430A6009A7FA1 /* LinearPartition */,
+				FDC80708182B849F00ADF578 /* BalancedFlowLayout */,
+				50CAF4CD180430A6009A7FA1 /* BalancedFlowLayoutDemo */,
 				FD9D1F6A181FC08500F17457 /* Resources */,
-				50CAF4EC180430A6009A7FA1 /* LinearPartitionTests */,
+				50CAF4EC180430A6009A7FA1 /* BalancedFlowLayoutDemoTests */,
 				50CAF4C6180430A6009A7FA1 /* Frameworks */,
 				50CAF4C5180430A6009A7FA1 /* Products */,
 			);
@@ -170,7 +171,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		50CAF4CD180430A6009A7FA1 /* LinearPartition */ = {
+		50CAF4CD180430A6009A7FA1 /* BalancedFlowLayoutDemo */ = {
 			isa = PBXGroup;
 			children = (
 				50CAF4D6180430A6009A7FA1 /* AppDelegate.h */,
@@ -180,16 +181,12 @@
 				50CAF4DD180430A6009A7FA1 /* ViewController.m */,
 				FD9D1F67181FBFC600F17457 /* ImageCell.h */,
 				FD9D1F68181FBFC600F17457 /* ImageCell.m */,
-				FD31C60E182259F0003FDF6F /* BalancedFlowLayout.h */,
-				FD31C60F182259F0003FDF6F /* BalancedFlowLayout.m */,
 				FDDD339918218D6500314905 /* UIImage+Decompression.h */,
 				FDDD339A18218D6500314905 /* UIImage+Decompression.m */,
 				50CAF4DF180430A6009A7FA1 /* Images.xcassets */,
 				50CAF4CE180430A6009A7FA1 /* Supporting Files */,
-				50CAF4FD180430F5009A7FA1 /* LinearPartition.h */,
-				50CAF4FE180430F5009A7FA1 /* LinearPartition.m */,
 			);
-			path = LinearPartition;
+			path = BalancedFlowLayoutDemo;
 			sourceTree = "<group>";
 		};
 		50CAF4CE180430A6009A7FA1 /* Supporting Files */ = {
@@ -203,13 +200,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		50CAF4EC180430A6009A7FA1 /* LinearPartitionTests */ = {
+		50CAF4EC180430A6009A7FA1 /* BalancedFlowLayoutDemoTests */ = {
 			isa = PBXGroup;
 			children = (
 				50CAF4F2180430A6009A7FA1 /* LinearPartitionTests.m */,
 				50CAF4ED180430A6009A7FA1 /* Supporting Files */,
 			);
-			path = LinearPartitionTests;
+			path = BalancedFlowLayoutDemoTests;
 			sourceTree = "<group>";
 		};
 		50CAF4ED180430A6009A7FA1 /* Supporting Files */ = {
@@ -258,6 +255,18 @@
 				FD9D1F83181FC08500F17457 /* photo-24.jpg */,
 			);
 			path = Images;
+			sourceTree = "<group>";
+		};
+		FDC80708182B849F00ADF578 /* BalancedFlowLayout */ = {
+			isa = PBXGroup;
+			children = (
+				FDC80709182B84C600ADF578 /* BalancedFlowLayout.h */,
+				FDC8070A182B84C600ADF578 /* BalancedFlowLayout.m */,
+				FDC8070B182B84C600ADF578 /* LinearPartition.h */,
+				FDC8070C182B84C600ADF578 /* LinearPartition.m */,
+			);
+			name = BalancedFlowLayout;
+			path = ../BalancedFlowLayout;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -381,13 +390,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FD31C610182259F0003FDF6F /* BalancedFlowLayout.m in Sources */,
 				50CAF4DE180430A6009A7FA1 /* ViewController.m in Sources */,
-				50CAF4FF180430F5009A7FA1 /* LinearPartition.m in Sources */,
 				50CAF4D8180430A6009A7FA1 /* AppDelegate.m in Sources */,
+				FDC8070E182B84C600ADF578 /* LinearPartition.m in Sources */,
 				FD9D1F69181FBFC600F17457 /* ImageCell.m in Sources */,
 				50CAF4D4180430A6009A7FA1 /* main.m in Sources */,
 				FDDD339B18218D6500314905 /* UIImage+Decompression.m in Sources */,
+				FDC8070D182B84C600ADF578 /* BalancedFlowLayout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -509,8 +518,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "LinearPartition/BalancedFlowLayoutDemo-Prefix.pch";
-				INFOPLIST_FILE = "LinearPartition/BalancedFlowLayoutDemo-Info.plist";
+				GCC_PREFIX_HEADER = "BalancedFlowLayoutDemo/BalancedFlowLayoutDemo-Prefix.pch";
+				INFOPLIST_FILE = "BalancedFlowLayoutDemo/BalancedFlowLayoutDemo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = BalancedFlowLayoutDemo;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -524,8 +533,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "LinearPartition/BalancedFlowLayoutDemo-Prefix.pch";
-				INFOPLIST_FILE = "LinearPartition/BalancedFlowLayoutDemo-Info.plist";
+				GCC_PREFIX_HEADER = "BalancedFlowLayoutDemo/BalancedFlowLayoutDemo-Prefix.pch";
+				INFOPLIST_FILE = "BalancedFlowLayoutDemo/BalancedFlowLayoutDemo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = BalancedFlowLayoutDemo;
 				TARGETED_DEVICE_FAMILY = "1,2";
