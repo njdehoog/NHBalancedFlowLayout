@@ -4,7 +4,10 @@ BalancedFlowLayout
 UICollectionViewLayout subclass for displaying items of different sizes in a grid without wasting any visual space. Inspired by: http://www.crispymtn.com/stories/the-algorithm-for-a-perfectly-balanced-photo-gallery
 
 ## Notes
+* 
 * Tested with iOS 7, but should be compatible with iOS6 as well
+* Works with iPhone and iPad
+* All interface orientations are supported
 
 ## Screenshots
 
