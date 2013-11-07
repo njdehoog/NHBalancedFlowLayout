@@ -5,5 +5,5 @@ UICollectionViewLayout subclass for displaying items of different sizes in a gri
 
 ## Screenshots
 
-![Landscape](http://i.imgur.com/2FGnDIh.jpg)
-![Portrait](http://imgur.com/KRItqy2.jpg)
+<img src="http://i.imgur.com/2FGnDIh.jpg" width="512"/>
+<img src="http://imgur.com/KRItqy2.jpg" width="384"/>
