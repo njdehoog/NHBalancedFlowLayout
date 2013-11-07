@@ -55,7 +55,7 @@
     
     NSAssert([self.delegate conformsToProtocol:@protocol(BalancedFlowLayoutDelegate)], @"UICollectionView delegate should conform to BalancedFlowLayout protocol");
     
-    CGFloat idealHeight = self.preferredRowHeight;
+    CGFloat idealHeight = self.preferredRowSize;
     if (idealHeight == 0) {
         if (self.scrollDirection == UICollectionViewScrollDirectionVertical) {
             idealHeight = CGRectGetHeight(self.collectionView.bounds) / 3.0;
@@ -275,9 +275,9 @@
 
 #pragma mark - Custom setters
 
-- (void)setPreferredRowHeight:(CGFloat)preferredRowHeight
+- (void)setPreferredRowSize:(CGFloat)preferredRowHeight
 {
-    _preferredRowHeight = preferredRowHeight;
+    _preferredRowSize = preferredRowHeight;
     
     [self invalidateLayout];
 }

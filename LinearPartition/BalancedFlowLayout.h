@@ -18,8 +18,8 @@
  */
 @interface BalancedFlowLayout : UICollectionViewLayout
 
-// The preferred height for each row in the grid.
-@property (nonatomic) CGFloat preferredRowHeight;
+// The preferred size for each row measured in the scroll direction
+@property (nonatomic) CGFloat preferredRowSize;
 
 // The margins used to lay out content in a section.
 @property (nonatomic) UIEdgeInsets sectionInset;
