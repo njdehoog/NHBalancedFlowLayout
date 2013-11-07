@@ -8,9 +8,9 @@
 
 #import "ViewController.h"
 #import "ImageCell.h"
-#import "LinearPartition.h"
+#import "NHLinearPartition.h"
 #import "UIImage+Decompression.h"
-#import "BalancedFlowLayout.h"
+#import "NHBalancedFlowLayout.h"
 
 #define NUMBER_OF_IMAGES 24
 
@@ -41,7 +41,7 @@
 
 #pragma mark - UICollectionViewFlowLayoutDelegate
 
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(BalancedFlowLayout *)collectionViewLayout preferredSizeForItemAtIndexPath:(NSIndexPath *)indexPath
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(NHBalancedFlowLayout *)collectionViewLayout preferredSizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     return [[self.images objectAtIndex:indexPath.item] size];
 }

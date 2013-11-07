@@ -16,7 +16,7 @@
  * Currently this class does not support supplementary or decoration views.
  *
  */
-@interface BalancedFlowLayout : UICollectionViewLayout
+@interface NHBalancedFlowLayout : UICollectionViewLayout
 
 // The preferred size for each row measured in the scroll direction
 @property (nonatomic) CGFloat preferredRowSize;
@@ -39,6 +39,6 @@
 @protocol BalancedFlowLayoutDelegate <UICollectionViewDelegateFlowLayout>
 
 @required
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(BalancedFlowLayout *)collectionViewLayout preferredSizeForItemAtIndexPath:(NSIndexPath *)indexPath;
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(NHBalancedFlowLayout *)collectionViewLayout preferredSizeForItemAtIndexPath:(NSIndexPath *)indexPath;
 
 @end

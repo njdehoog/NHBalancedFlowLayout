@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Niels de Hoog. All rights reserved.
 //
 
-#import "LinearPartition.h"
+#import "NHLinearPartition.h"
 
-@implementation LinearPartition
+@implementation NHLinearPartition
 
 + (NSArray *)linearPartitionForSequence:(NSArray *)sequence numberOfPartitions:(NSInteger)numberOfPartitions
 {

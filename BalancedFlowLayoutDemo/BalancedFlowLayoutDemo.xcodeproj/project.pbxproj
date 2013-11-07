@@ -46,8 +46,8 @@
 		FD9D1F99181FC08500F17457 /* photo-22.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD9D1F81181FC08500F17457 /* photo-22.jpg */; };
 		FD9D1F9A181FC08500F17457 /* photo-23.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD9D1F82181FC08500F17457 /* photo-23.jpg */; };
 		FD9D1F9B181FC08500F17457 /* photo-24.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD9D1F83181FC08500F17457 /* photo-24.jpg */; };
-		FDC8070D182B84C600ADF578 /* BalancedFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC8070A182B84C600ADF578 /* BalancedFlowLayout.m */; };
-		FDC8070E182B84C600ADF578 /* LinearPartition.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC8070C182B84C600ADF578 /* LinearPartition.m */; };
+		FDC8070D182B84C600ADF578 /* NHBalancedFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC8070A182B84C600ADF578 /* NHBalancedFlowLayout.m */; };
+		FDC8070E182B84C600ADF578 /* NHLinearPartition.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC8070C182B84C600ADF578 /* NHLinearPartition.m */; };
 		FDDD339B18218D6500314905 /* UIImage+Decompression.m in Sources */ = {isa = PBXBuildFile; fileRef = FDDD339A18218D6500314905 /* UIImage+Decompression.m */; };
 /* End PBXBuildFile section */
 
@@ -107,10 +107,10 @@
 		FD9D1F81181FC08500F17457 /* photo-22.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "photo-22.jpg"; sourceTree = "<group>"; };
 		FD9D1F82181FC08500F17457 /* photo-23.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "photo-23.jpg"; sourceTree = "<group>"; };
 		FD9D1F83181FC08500F17457 /* photo-24.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "photo-24.jpg"; sourceTree = "<group>"; };
-		FDC80709182B84C600ADF578 /* BalancedFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BalancedFlowLayout.h; sourceTree = "<group>"; };
-		FDC8070A182B84C600ADF578 /* BalancedFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BalancedFlowLayout.m; sourceTree = "<group>"; };
-		FDC8070B182B84C600ADF578 /* LinearPartition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinearPartition.h; sourceTree = "<group>"; };
-		FDC8070C182B84C600ADF578 /* LinearPartition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinearPartition.m; sourceTree = "<group>"; };
+		FDC80709182B84C600ADF578 /* NHBalancedFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NHBalancedFlowLayout.h; sourceTree = "<group>"; };
+		FDC8070A182B84C600ADF578 /* NHBalancedFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NHBalancedFlowLayout.m; sourceTree = "<group>"; };
+		FDC8070B182B84C600ADF578 /* NHLinearPartition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NHLinearPartition.h; sourceTree = "<group>"; };
+		FDC8070C182B84C600ADF578 /* NHLinearPartition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NHLinearPartition.m; sourceTree = "<group>"; };
 		FDDD339918218D6500314905 /* UIImage+Decompression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Decompression.h"; sourceTree = "<group>"; };
 		FDDD339A18218D6500314905 /* UIImage+Decompression.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Decompression.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -142,7 +142,7 @@
 		50CAF4BB180430A6009A7FA1 = {
 			isa = PBXGroup;
 			children = (
-				FDC80708182B849F00ADF578 /* BalancedFlowLayout */,
+				FDC80708182B849F00ADF578 /* NHBalancedFlowLayout */,
 				50CAF4CD180430A6009A7FA1 /* BalancedFlowLayoutDemo */,
 				FD9D1F6A181FC08500F17457 /* Resources */,
 				50CAF4EC180430A6009A7FA1 /* BalancedFlowLayoutDemoTests */,
@@ -257,16 +257,16 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
-		FDC80708182B849F00ADF578 /* BalancedFlowLayout */ = {
+		FDC80708182B849F00ADF578 /* NHBalancedFlowLayout */ = {
 			isa = PBXGroup;
 			children = (
-				FDC80709182B84C600ADF578 /* BalancedFlowLayout.h */,
-				FDC8070A182B84C600ADF578 /* BalancedFlowLayout.m */,
-				FDC8070B182B84C600ADF578 /* LinearPartition.h */,
-				FDC8070C182B84C600ADF578 /* LinearPartition.m */,
+				FDC80709182B84C600ADF578 /* NHBalancedFlowLayout.h */,
+				FDC8070A182B84C600ADF578 /* NHBalancedFlowLayout.m */,
+				FDC8070B182B84C600ADF578 /* NHLinearPartition.h */,
+				FDC8070C182B84C600ADF578 /* NHLinearPartition.m */,
 			);
-			name = BalancedFlowLayout;
-			path = ../BalancedFlowLayout;
+			name = NHBalancedFlowLayout;
+			path = ../NHBalancedFlowLayout;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -392,11 +392,11 @@
 			files = (
 				50CAF4DE180430A6009A7FA1 /* ViewController.m in Sources */,
 				50CAF4D8180430A6009A7FA1 /* AppDelegate.m in Sources */,
-				FDC8070E182B84C600ADF578 /* LinearPartition.m in Sources */,
+				FDC8070E182B84C600ADF578 /* NHLinearPartition.m in Sources */,
 				FD9D1F69181FBFC600F17457 /* ImageCell.m in Sources */,
 				50CAF4D4180430A6009A7FA1 /* main.m in Sources */,
 				FDDD339B18218D6500314905 /* UIImage+Decompression.m in Sources */,
-				FDC8070D182B84C600ADF578 /* BalancedFlowLayout.m in Sources */,
+				FDC8070D182B84C600ADF578 /* NHBalancedFlowLayout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

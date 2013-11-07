@@ -6,17 +6,17 @@
 //  Copyright (c) 2013 Niels de Hoog. All rights reserved.
 //
 
-#import "BalancedFlowLayout.h"
-#import "LinearPartition.h"
+#import "NHBalancedFlowLayout.h"
+#import "NHLinearPartition.h"
 
-@interface BalancedFlowLayout ()
+@interface NHBalancedFlowLayout ()
 
 @property (nonatomic) CGSize contentSize;
 @property (nonatomic, strong) NSArray *itemFrames;
 
 @end
 
-@implementation BalancedFlowLayout
+@implementation NHBalancedFlowLayout
 
 #pragma mark - Lifecycle
 
@@ -181,7 +181,7 @@
     NSMutableArray *itemFrames = [NSMutableArray array];
 
     NSArray *weights = [self weightsForItemsInSection:section];
-    NSArray *partition = [LinearPartition linearPartitionForSequence:weights numberOfPartitions:numberOfRows];
+    NSArray *partition = [NHLinearPartition linearPartitionForSequence:weights numberOfPartitions:numberOfRows];
     
     int i = 0;
     CGPoint offset = CGPointMake(sectionOffset.x + self.sectionInset.left, sectionOffset.y + self.sectionInset.top);
