@@ -7,6 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "NHLinearPartition.h"
 
 @interface LinearPartitionTests : XCTestCase
 
@@ -26,9 +27,13 @@
     [super tearDown];
 }
 
-- (void)testExample
+- (void)testNumberOfPartitionsEqualToSequenceCount
 {
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+    NSArray *sequence = @[@346, @146, @125];
+    NSInteger numberOfPartitions = 3;
+    
+    NSArray *partition = [NHLinearPartition linearPartitionForSequence:sequence numberOfPartitions:numberOfPartitions];
+    XCTAssertNotNil(partition, @"should return valid partition");
 }
 
 @end

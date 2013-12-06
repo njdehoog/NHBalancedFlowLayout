@@ -17,7 +17,7 @@
     
     if (k <= 0) return @[];
     
-    if (k > n) {
+    if (k >= n) {
         NSMutableArray *partition = [[NSMutableArray alloc] init];
         [sequence enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             [partition addObject:@[obj]];

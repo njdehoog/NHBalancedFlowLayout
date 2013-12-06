@@ -19,7 +19,6 @@
 		50CAF4E8180430A6009A7FA1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50CAF4C7180430A6009A7FA1 /* Foundation.framework */; };
 		50CAF4E9180430A6009A7FA1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50CAF4CB180430A6009A7FA1 /* UIKit.framework */; };
 		50CAF4F1180430A6009A7FA1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 50CAF4EF180430A6009A7FA1 /* InfoPlist.strings */; };
-		50CAF4F3180430A6009A7FA1 /* LinearPartitionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 50CAF4F2180430A6009A7FA1 /* LinearPartitionTests.m */; };
 		FD607149181E4C8B00593765 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD607148181E4C8B00593765 /* Main.storyboard */; };
 		FD9D1F69181FBFC600F17457 /* ImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FD9D1F68181FBFC600F17457 /* ImageCell.m */; };
 		FD9D1F84181FC08500F17457 /* photo-01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD9D1F6C181FC08500F17457 /* photo-01.jpg */; };
@@ -49,6 +48,7 @@
 		FDC8070D182B84C600ADF578 /* NHBalancedFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC8070A182B84C600ADF578 /* NHBalancedFlowLayout.m */; };
 		FDC8070E182B84C600ADF578 /* NHLinearPartition.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC8070C182B84C600ADF578 /* NHLinearPartition.m */; };
 		FDDD339B18218D6500314905 /* UIImage+Decompression.m in Sources */ = {isa = PBXBuildFile; fileRef = FDDD339A18218D6500314905 /* UIImage+Decompression.m */; };
+		FDFDF5141851D25500922D68 /* LinearPartitionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FDFDF5131851D25500922D68 /* LinearPartitionTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,7 +79,6 @@
 		50CAF4E6180430A6009A7FA1 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		50CAF4EE180430A6009A7FA1 /* BalancedFlowLayoutDemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BalancedFlowLayoutDemoTests-Info.plist"; sourceTree = "<group>"; };
 		50CAF4F0180430A6009A7FA1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		50CAF4F2180430A6009A7FA1 /* LinearPartitionTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LinearPartitionTests.m; sourceTree = "<group>"; };
 		FD607148181E4C8B00593765 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		FD9D1F67181FBFC600F17457 /* ImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCell.h; sourceTree = "<group>"; };
 		FD9D1F68181FBFC600F17457 /* ImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageCell.m; sourceTree = "<group>"; };
@@ -113,6 +112,7 @@
 		FDC8070C182B84C600ADF578 /* NHLinearPartition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NHLinearPartition.m; sourceTree = "<group>"; };
 		FDDD339918218D6500314905 /* UIImage+Decompression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Decompression.h"; sourceTree = "<group>"; };
 		FDDD339A18218D6500314905 /* UIImage+Decompression.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Decompression.m"; sourceTree = "<group>"; };
+		FDFDF5131851D25500922D68 /* LinearPartitionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinearPartitionTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,11 +203,10 @@
 		50CAF4EC180430A6009A7FA1 /* NHBalancedFlowLayoutDemoTests */ = {
 			isa = PBXGroup;
 			children = (
-				50CAF4F2180430A6009A7FA1 /* LinearPartitionTests.m */,
+				FDFDF5131851D25500922D68 /* LinearPartitionTests.m */,
 				50CAF4ED180430A6009A7FA1 /* Supporting Files */,
 			);
-			name = NHBalancedFlowLayoutDemoTests;
-			path = BalancedFlowLayoutDemoTests;
+			path = NHBalancedFlowLayoutDemoTests;
 			sourceTree = "<group>";
 		};
 		50CAF4ED180430A6009A7FA1 /* Supporting Files */ = {
@@ -405,7 +404,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50CAF4F3180430A6009A7FA1 /* LinearPartitionTests.m in Sources */,
+				FDFDF5141851D25500922D68 /* LinearPartitionTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -547,19 +546,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/LinearPartition.app/LinearPartition";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/NHBalancedFlowLayoutDemo.app/NHBalancedFlowLayoutDemo";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "LinearPartition/LinearPartition-Prefix.pch";
+				GCC_PREFIX_HEADER = "NHBalancedFlowLayoutDemo/NHBalancedFlowLayoutDemo-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "LinearPartitionTests/BalancedFlowLayoutDemoTests-Info.plist";
+				INFOPLIST_FILE = "NHBalancedFlowLayoutDemoTests/BalancedFlowLayoutDemoTests-Info.plist";
 				PRODUCT_NAME = NHBalancedFlowLayoutDemoTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -570,15 +569,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/LinearPartition.app/LinearPartition";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/NHBalancedFlowLayoutDemo.app/NHBalancedFlowLayoutDemo";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "LinearPartition/LinearPartition-Prefix.pch";
-				INFOPLIST_FILE = "LinearPartitionTests/BalancedFlowLayoutDemoTests-Info.plist";
+				GCC_PREFIX_HEADER = "NHBalancedFlowLayoutDemo/NHBalancedFlowLayoutDemo-Prefix.pch";
+				INFOPLIST_FILE = "NHBalancedFlowLayoutDemoTests/BalancedFlowLayoutDemoTests-Info.plist";
 				PRODUCT_NAME = NHBalancedFlowLayoutDemoTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
