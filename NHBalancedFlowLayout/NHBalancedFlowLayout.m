@@ -229,12 +229,18 @@
             }
         }
         
-        // move offset to next line
-        if (self.scrollDirection == UICollectionViewScrollDirectionVertical) {
-            offset = CGPointMake(self.sectionInset.left, offset.y + previousItemSize + self.minimumLineSpacing);
-        }
-        else {
-            offset = CGPointMake(offset.x + previousItemSize + self.minimumLineSpacing, self.sectionInset.top);
+        /**
+         * Check if row actually contains any items before changing offset, 
+         * because linear partitioning algorithm might return a row with no items.
+         */
+        if ([row count] > 0) {
+            // move offset to next line
+            if (self.scrollDirection == UICollectionViewScrollDirectionVertical) {
+                offset = CGPointMake(self.sectionInset.left, offset.y + previousItemSize + self.minimumLineSpacing);
+            }
+            else {
+                offset = CGPointMake(offset.x + previousItemSize + self.minimumLineSpacing, self.sectionInset.top);
+            }
         }
         
         i += [row count];

@@ -76,14 +76,19 @@
     n = n - 1;
     NSMutableArray *answer = [NSMutableArray array];
     while (k >= 0) {
-        NSMutableArray *currentAnswer = [NSMutableArray array];
-        for (NSInteger i = [solution[n-1][k] integerValue] + 1, range = n+1; i < range; i++) {
-            [currentAnswer addObject:sequence[i]];
+        if (n < 1) {
+            [answer insertObject:@[] atIndex:0];
+        }
+        else {
+            NSMutableArray *currentAnswer = [NSMutableArray array];
+            for (NSInteger i = [solution[n-1][k] integerValue] + 1, range = n+1; i < range; i++) {
+                [currentAnswer addObject:sequence[i]];
+            }
+            [answer insertObject:currentAnswer atIndex:0];
+            
+            n = [solution[n-1][k] integerValue];
         }
         
-        [answer insertObject:currentAnswer atIndex:0];
-        
-        n = [solution[n-1][k] integerValue];
         k = k - 1;
     }
     
@@ -93,7 +98,7 @@
     }
     
     [answer insertObject:currentAnswer atIndex:0];
-    
+        
     return [answer copy];
 }
 

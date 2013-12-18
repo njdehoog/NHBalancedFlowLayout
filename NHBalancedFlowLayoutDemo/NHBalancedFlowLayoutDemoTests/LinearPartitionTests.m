@@ -34,6 +34,17 @@
     
     NSArray *partition = [NHLinearPartition linearPartitionForSequence:sequence numberOfPartitions:numberOfPartitions];
     XCTAssertNotNil(partition, @"should return valid partition");
+    XCTAssert([partition count] == numberOfPartitions, @"should contain 3 objects");
+}
+
+- (void)testOutOfBoundsException
+{
+    NSArray *sequence = @[@346, @150, @125, @71, @137];
+    NSInteger numberOfPartitions = 4;
+    
+    NSArray *partition = [NHLinearPartition linearPartitionForSequence:sequence numberOfPartitions:numberOfPartitions];
+    XCTAssertNotNil(partition, @"should return valid partition");
+    XCTAssert([partition count] == numberOfPartitions, @"should contain 4 objects");
 }
 
 @end
