@@ -12,7 +12,10 @@
 @interface NHBalancedFlowLayout ()
 
 @property (nonatomic) CGSize contentSize;
+
+@property (nonatomic, strong) NSArray *headerFrames;
 @property (nonatomic, strong) NSArray *itemFrames;
+@property (nonatomic, strong) NSArray *footerFrames;
 
 @end
 
@@ -44,6 +47,8 @@
     self.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
     self.minimumLineSpacing = 10;
     self.minimumInteritemSpacing = 10;
+    self.headerReferenceSize = CGSizeZero;
+    self.footerReferenceSize = CGSizeZero;
     self.scrollDirection = UICollectionViewScrollDirectionVertical;
 }
 
@@ -65,27 +70,56 @@
         }
     }
     
+    NSMutableArray *headerFrames = [NSMutableArray array];
     NSMutableArray *itemFrames = [NSMutableArray array];
+    NSMutableArray *footerFrames = [NSMutableArray array];
+
     CGSize contentSize = CGSizeZero;
     for (int section = 0; section < [self.collectionView numberOfSections]; section++) {
+        CGSize headerSize = [self referenceSizeForHeaderInSection:section];
         CGSize sectionSize = CGSizeZero;
+        
+        CGRect headerFrame;
+        if (self.scrollDirection == UICollectionViewScrollDirectionVertical) {
+            headerFrame = CGRectMake(0, contentSize.height, headerSize.width, headerSize.height);
+        } else {
+            headerFrame = CGRectMake(contentSize.width, 0, headerSize.width, headerSize.height);
+        }
+        [headerFrames addObject:[NSValue valueWithCGRect:headerFrame]];
         
         CGFloat totalItemSize = [self totalItemSizeForSection:section preferredRowSize:idealHeight];
         NSInteger numberOfRows = MAX(roundf(totalItemSize / [self viewPortAvailableSize]), 1);
     
-        CGPoint sectionOffset = self.scrollDirection == UICollectionViewScrollDirectionVertical ? CGPointMake(0, contentSize.height) : CGPointMake(contentSize.width, 0);
+        CGPoint sectionOffset;
+        if (self.scrollDirection == UICollectionViewScrollDirectionVertical) {
+            sectionOffset = CGPointMake(0, contentSize.height + headerSize.height);
+        } else {
+            sectionOffset = CGPointMake(contentSize.width + headerSize.width, 0);
+        }
+        
         NSArray *framesForSection = [self framesForItemsInSection:section numberOfRows:numberOfRows sectionOffset:sectionOffset sectionSize:&sectionSize];
         [itemFrames addObject:framesForSection];
         
+        CGSize footerSize = [self referenceSizeForFooterInSection:section];
+        CGRect footerFrame;
         if (self.scrollDirection == UICollectionViewScrollDirectionVertical) {
-            contentSize = CGSizeMake(sectionSize.width, contentSize.height + sectionSize.height);
+            footerFrame = CGRectMake(0, contentSize.height + headerSize.height + sectionSize.height, footerSize.width, footerSize.height);
+        } else {
+            footerFrame = CGRectMake(contentSize.width + headerSize.width + sectionSize.width, 0, footerSize.width, footerSize.height);
+        }
+        [footerFrames addObject:[NSValue valueWithCGRect:footerFrame]];
+
+        if (self.scrollDirection == UICollectionViewScrollDirectionVertical) {
+            contentSize = CGSizeMake(sectionSize.width, contentSize.height + headerSize.height + sectionSize.height + footerSize.height);
         }
         else {
-            contentSize = CGSizeMake(contentSize.width + sectionSize.width, sectionSize.height);
+            contentSize = CGSizeMake(contentSize.width + headerSize.width + sectionSize.width + footerSize.width, sectionSize.height);
         }
     }
     
+    self.headerFrames = [headerFrames copy];
     self.itemFrames = [itemFrames copy];
+    self.footerFrames = [footerFrames copy];
     
     self.contentSize = contentSize;
 }
@@ -99,11 +133,26 @@
 {
     NSMutableArray *layoutAttributes = [NSMutableArray array];
     
-    NSArray *visibleIndexPaths = [self indexPathsForItemsInRect:rect];
-    for (NSIndexPath *indexPath in visibleIndexPaths) {
-        [layoutAttributes addObject:[self layoutAttributesForItemAtIndexPath:indexPath]];
+    for (NSInteger section = 0, n = [self.collectionView numberOfSections]; section < n; section++) {
+        NSIndexPath *sectionIndexPath = [NSIndexPath indexPathForItem:0 inSection:section];
+
+        if (CGRectIntersectsRect(rect, [self headerFrameForSection:section])) {
+            [layoutAttributes addObject:[self layoutAttributesForSupplementaryViewOfKind:UICollectionElementKindSectionHeader atIndexPath:sectionIndexPath]];
+        }
+        
+        for (int i = 0; i < [self.collectionView numberOfItemsInSection:section]; i++) {
+            NSIndexPath *indexPath = [NSIndexPath indexPathForItem:i inSection:section];
+            if (CGRectIntersectsRect(rect, [self itemFrameForIndexPath:indexPath])) {
+                [layoutAttributes addObject:[self layoutAttributesForItemAtIndexPath:indexPath]];
+            }
+        }
+
+        if (CGRectIntersectsRect(rect, [self footerFrameForSection:section])) {
+            [layoutAttributes addObject:[self layoutAttributesForSupplementaryViewOfKind:UICollectionElementKindSectionFooter atIndexPath:sectionIndexPath]];
+        }
+
+
     }
-    
     return layoutAttributes;
 }
 
@@ -112,6 +161,20 @@
     UICollectionViewLayoutAttributes *attributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
     attributes.frame = [self itemFrameForIndexPath:indexPath];
     
+    return attributes;
+}
+
+- (UICollectionViewLayoutAttributes *)layoutAttributesForSupplementaryViewOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionViewLayoutAttributes *attributes =
+        [UICollectionViewLayoutAttributes layoutAttributesForSupplementaryViewOfKind:kind
+                                                                       withIndexPath:indexPath];
+    
+    if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
+        attributes.frame = [self headerFrameForSection:indexPath.section];
+    } else if ([kind isEqualToString:UICollectionElementKindSectionFooter]) {
+        attributes.frame = [self footerFrameForSection:indexPath.section];
+    }
     return attributes;
 }
 
@@ -127,24 +190,19 @@
 
 #pragma mark - Layout helpers
 
-- (NSArray *)indexPathsForItemsInRect:(CGRect)rect
+- (CGRect)headerFrameForSection:(NSInteger)section
 {
-    NSMutableArray *indexPaths = [NSMutableArray array];
-    for (NSInteger section = 0, n = [self.collectionView numberOfSections]; section < n; section++) {
-        for (int i = 0; i < [self.collectionView numberOfItemsInSection:section]; i++) {
-            NSIndexPath *indexPath = [NSIndexPath indexPathForItem:i inSection:section];
-            if (CGRectIntersectsRect(rect, [self itemFrameForIndexPath:indexPath])) {
-                [indexPaths addObject:indexPath];
-            }
-        }
-    }
-    
-    return [indexPaths copy];
+    return [[self.headerFrames objectAtIndex:section] CGRectValue];
 }
 
 - (CGRect)itemFrameForIndexPath:(NSIndexPath *)indexPath
 {
     return [[[self.itemFrames objectAtIndex:indexPath.section] objectAtIndex:indexPath.item] CGRectValue];
+}
+
+- (CGRect)footerFrameForSection:(NSInteger)section
+{
+    return [[self.footerFrames objectAtIndex:section] CGRectValue];
 }
 
 - (CGFloat)totalItemSizeForSection:(NSInteger)section preferredRowSize:(CGFloat)preferredRowSize
@@ -200,7 +258,7 @@
                 summedRatios += preferredSize.height / preferredSize.width;
             }
         }
-        
+
         CGFloat rowSize = [self viewPortAvailableSize] - (([row count] - 1) * self.minimumInteritemSpacing);
         for (NSInteger j = i, n = i + [row count]; j < n; j++) {
             CGSize preferredSize = [self.delegate collectionView:self.collectionView layout:self preferredSizeForItemAtIndexPath:[NSIndexPath indexPathForItem:j inSection:section]];
@@ -309,11 +367,46 @@
     [self invalidateLayout];
 }
 
+- (void)setHeaderReferenceSize:(CGSize)headerReferenceSize
+{
+    _headerReferenceSize = headerReferenceSize;
+    
+    [self invalidateLayout];
+}
+
+- (void)setFooterReferenceSize:(CGSize)footerReferenceSize
+{
+    _footerReferenceSize = footerReferenceSize;
+    
+    [self invalidateLayout];
+}
+
 #pragma mark - Delegate
 
 - (id<NHBalancedFlowLayoutDelegate>)delegate
 {
     return (id<NHBalancedFlowLayoutDelegate>)self.collectionView.delegate;
 }
+
+#pragma mark - Delegate helpers
+
+- (CGSize)referenceSizeForHeaderInSection:(NSInteger)section
+{
+    BOOL hasSelector =
+    [self.collectionView.delegate respondsToSelector:@selector(collectionView:layout:referenceSizeForHeaderInSection:)];
+    if (hasSelector)
+        return [(id <NHBalancedFlowLayoutDelegate>)self.collectionView.delegate collectionView:self.collectionView layout:self referenceSizeForHeaderInSection:section];
+    return self.headerReferenceSize;
+}
+
+- (CGSize)referenceSizeForFooterInSection:(NSInteger)section
+{
+    BOOL hasSelector =
+    [self.collectionView.delegate respondsToSelector:@selector(collectionView:layout:referenceSizeForFooterInSection:)];
+    if (hasSelector)
+        return [(id <NHBalancedFlowLayoutDelegate>)self.collectionView.delegate collectionView:self.collectionView layout:self referenceSizeForFooterInSection:section];
+    return self.footerReferenceSize;
+}
+
 
 @end

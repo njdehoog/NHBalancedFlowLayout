@@ -21,6 +21,14 @@
 // The preferred size for each row measured in the scroll direction
 @property (nonatomic) CGFloat preferredRowSize;
 
+// The size of each section's header. This maybe dynamically adjusted
+// per section via the protocol method referenceSizeForHeaderInSection.
+@property (nonatomic) CGSize headerReferenceSize;
+
+// The size of each section's header. This maybe dynamically adjusted
+// per section via the protocol method referenceSizeForFooterInSection.
+@property (nonatomic) CGSize footerReferenceSize;
+
 // The margins used to lay out content in a section.
 @property (nonatomic) UIEdgeInsets sectionInset;
 
