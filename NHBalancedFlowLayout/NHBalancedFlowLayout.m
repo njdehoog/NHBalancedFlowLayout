@@ -136,22 +136,25 @@
     for (NSInteger section = 0, n = [self.collectionView numberOfSections]; section < n; section++) {
         NSIndexPath *sectionIndexPath = [NSIndexPath indexPathForItem:0 inSection:section];
 
-        if (CGRectIntersectsRect(rect, [self headerFrameForSection:section])) {
-            [layoutAttributes addObject:[self layoutAttributesForSupplementaryViewOfKind:UICollectionElementKindSectionHeader atIndexPath:sectionIndexPath]];
-        }
+        UICollectionViewLayoutAttributes *headerAttributes = [self layoutAttributesForSupplementaryViewOfKind:UICollectionElementKindSectionHeader   atIndexPath:sectionIndexPath];
         
+        if (! CGSizeEqualToSize(headerAttributes.frame.size, CGSizeZero) && CGRectIntersectsRect(headerAttributes.frame, rect)) {
+            [layoutAttributes addObject:headerAttributes];
+        }
+            
         for (int i = 0; i < [self.collectionView numberOfItemsInSection:section]; i++) {
             NSIndexPath *indexPath = [NSIndexPath indexPathForItem:i inSection:section];
-            if (CGRectIntersectsRect(rect, [self itemFrameForIndexPath:indexPath])) {
-                [layoutAttributes addObject:[self layoutAttributesForItemAtIndexPath:indexPath]];
+            UICollectionViewLayoutAttributes *itemAttributes = [self layoutAttributesForItemAtIndexPath:indexPath];
+            if (CGRectIntersectsRect(rect, itemAttributes.frame)) {
+                [layoutAttributes addObject:itemAttributes];
             }
         }
-
-        if (CGRectIntersectsRect(rect, [self footerFrameForSection:section])) {
-            [layoutAttributes addObject:[self layoutAttributesForSupplementaryViewOfKind:UICollectionElementKindSectionFooter atIndexPath:sectionIndexPath]];
+        
+        UICollectionViewLayoutAttributes *footerAttributes = [self layoutAttributesForSupplementaryViewOfKind:UICollectionElementKindSectionFooter   atIndexPath:sectionIndexPath];
+        
+        if (! CGSizeEqualToSize(footerAttributes.frame.size, CGSizeZero) && CGRectIntersectsRect(footerAttributes.frame, rect)) {
+            [layoutAttributes addObject:footerAttributes];
         }
-
-
     }
     return layoutAttributes;
 }
