@@ -14,6 +14,9 @@
 
 #define NUMBER_OF_IMAGES 24
 
+#define HEADER_SIZE 100.0f
+#define FOOTER_SIZE 100.0f
+
 @interface ViewController () <NHBalancedFlowLayoutDelegate>
 
 @property (nonatomic, strong) NSArray *images;
@@ -37,6 +40,15 @@
     }
     
     return self;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    NHBalancedFlowLayout *layout = (NHBalancedFlowLayout *)self.collectionViewLayout;
+    layout.headerReferenceSize = CGSizeMake(HEADER_SIZE, HEADER_SIZE);
+    layout.footerReferenceSize = CGSizeMake(FOOTER_SIZE, FOOTER_SIZE);
 }
 
 #pragma mark - UICollectionViewFlowLayoutDelegate
@@ -82,5 +94,18 @@
     return cell;
 }
 
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionReusableView *view = nil;
+    
+    if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
+        view = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
+    }
+    else if ([kind isEqualToString:UICollectionElementKindSectionFooter]) {
+        view = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"FooterView" forIndexPath:indexPath];
+    }
+    
+    return view;
+}
 
 @end

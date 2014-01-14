@@ -81,9 +81,9 @@
         
         CGRect headerFrame;
         if (self.scrollDirection == UICollectionViewScrollDirectionVertical) {
-            headerFrame = CGRectMake(0, contentSize.height, headerSize.width, headerSize.height);
+            headerFrame = CGRectMake(0, contentSize.height, CGRectGetWidth(self.collectionView.bounds), headerSize.height);
         } else {
-            headerFrame = CGRectMake(contentSize.width, 0, headerSize.width, headerSize.height);
+            headerFrame = CGRectMake(contentSize.width, 0, headerSize.width, CGRectGetHeight(self.collectionView.bounds));
         }
         [headerFrames addObject:[NSValue valueWithCGRect:headerFrame]];
         
@@ -103,9 +103,9 @@
         CGSize footerSize = [self referenceSizeForFooterInSection:section];
         CGRect footerFrame;
         if (self.scrollDirection == UICollectionViewScrollDirectionVertical) {
-            footerFrame = CGRectMake(0, contentSize.height + headerSize.height + sectionSize.height, footerSize.width, footerSize.height);
+            footerFrame = CGRectMake(0, contentSize.height + headerSize.height + sectionSize.height, CGRectGetWidth(self.collectionView.bounds), footerSize.height);
         } else {
-            footerFrame = CGRectMake(contentSize.width + headerSize.width + sectionSize.width, 0, footerSize.width, footerSize.height);
+            footerFrame = CGRectMake(contentSize.width + headerSize.width + sectionSize.width, 0, footerSize.width, CGRectGetHeight(self.collectionView.bounds));
         }
         [footerFrames addObject:[NSValue valueWithCGRect:footerFrame]];
 
@@ -169,9 +169,7 @@
 
 - (UICollectionViewLayoutAttributes *)layoutAttributesForSupplementaryViewOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
-    UICollectionViewLayoutAttributes *attributes =
-        [UICollectionViewLayoutAttributes layoutAttributesForSupplementaryViewOfKind:kind
-                                                                       withIndexPath:indexPath];
+    UICollectionViewLayoutAttributes *attributes = [UICollectionViewLayoutAttributes layoutAttributesForSupplementaryViewOfKind:kind withIndexPath:indexPath];
     
     if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
         attributes.frame = [self headerFrameForSection:indexPath.section];
@@ -395,19 +393,19 @@
 
 - (CGSize)referenceSizeForHeaderInSection:(NSInteger)section
 {
-    BOOL hasSelector =
-    [self.collectionView.delegate respondsToSelector:@selector(collectionView:layout:referenceSizeForHeaderInSection:)];
-    if (hasSelector)
+    BOOL respondsToSelector = [self.collectionView.delegate respondsToSelector:@selector(collectionView:layout:referenceSizeForHeaderInSection:)];
+    if (respondsToSelector) {
         return [(id <NHBalancedFlowLayoutDelegate>)self.collectionView.delegate collectionView:self.collectionView layout:self referenceSizeForHeaderInSection:section];
+    }
     return self.headerReferenceSize;
 }
 
 - (CGSize)referenceSizeForFooterInSection:(NSInteger)section
 {
-    BOOL hasSelector =
-    [self.collectionView.delegate respondsToSelector:@selector(collectionView:layout:referenceSizeForFooterInSection:)];
-    if (hasSelector)
+    BOOL respondsToSelector = [self.collectionView.delegate respondsToSelector:@selector(collectionView:layout:referenceSizeForFooterInSection:)];
+    if (respondsToSelector) {
         return [(id <NHBalancedFlowLayoutDelegate>)self.collectionView.delegate collectionView:self.collectionView layout:self referenceSizeForFooterInSection:section];
+    }
     return self.footerReferenceSize;
 }
 
