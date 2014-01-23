@@ -50,7 +50,7 @@
     // calculate the costs and fill the solution buffer
     for (NSInteger i = 1; i < n; i++) {
         for (NSInteger j = 1; j < k; j++) {
-            NSInteger currentMin = -1;
+            NSInteger currentMin = 0;
             NSInteger minX = NSIntegerMax;
             
             for (NSInteger x = 0; x < i; x++) {
