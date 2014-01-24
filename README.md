@@ -13,6 +13,19 @@ UICollectionViewLayout subclass for displaying items of different sizes in a gri
 <img src="http://i.imgur.com/2FGnDIh.jpg" width="512"/>
 <img src="http://imgur.com/KRItqy2.jpg" width="384"/>
 
+## Installation
+
+The easiest way is to use CocoaPods. If you don't already, here's a [guide](http://guides.cocoapods.org/using/getting-started.html).
+
+	pod 'NHBalancedFlowLayout', '~> 0.1.2'
+
+If you don't use CocoaPods, you'll need to copy the following files into your project:
+
+* NHBalancedFlowLayout.h
+* NHBalancedFlowLayout.m
+* NHLinearPartition.h
+* NHLinearPartition.m
+
 ## Credits
 
 Attributions for the photos in the same order as they appear in the demo:
