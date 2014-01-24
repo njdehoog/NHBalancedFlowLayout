@@ -20,7 +20,6 @@
 @interface ViewController () <NHBalancedFlowLayoutDelegate>
 
 @property (nonatomic, strong) NSArray *images;
-@property (nonatomic, strong) NSArray *itemSizes;
 
 @end
 
