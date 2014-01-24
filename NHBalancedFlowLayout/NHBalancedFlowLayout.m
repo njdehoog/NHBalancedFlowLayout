@@ -182,9 +182,7 @@
             CGRect itemFrame = _itemFrameSections[section][i];
             if (CGRectIntersectsRect(rect, itemFrame)) {
                 NSIndexPath *indexPath = [NSIndexPath indexPathForItem:i inSection:section];
-                UICollectionViewLayoutAttributes *itemAttributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
-                itemAttributes.frame = itemFrame;
-                [layoutAttributes addObject:itemAttributes];
+                [layoutAttributes addObject:[self layoutAttributesForItemAtIndexPath:indexPath]];
             }
         }
         
