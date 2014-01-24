@@ -107,13 +107,12 @@
     _numberOfItemFrameSections = [self.collectionView numberOfSections];
     _itemFrameSections = (CGRect **)malloc(sizeof(CGRect *) * _numberOfItemFrameSections);
     
-    for (NSInteger section = 0; section < _numberOfItemFrameSections; section++) {
+    for (int section = 0; section < [self.collectionView numberOfSections]; section++) {
+        // add new item frames array to sections array
         NSInteger numberOfItemsInSections = [self.collectionView numberOfItemsInSection:section];
         CGRect *itemFrames = (CGRect *)malloc(sizeof(CGRect) * numberOfItemsInSections);
         _itemFrameSections[section] = itemFrames;
-    }
-    
-    for (int section = 0; section < [self.collectionView numberOfSections]; section++) {
+        
         CGSize headerSize = [self referenceSizeForHeaderInSection:section];
         CGSize sectionSize = CGSizeZero;
         
@@ -135,7 +134,7 @@
             sectionOffset = CGPointMake(contentSize.width + headerSize.width, 0);
         }
         
-        [self setFrames:_itemFrameSections[section] forItemsInSection:section numberOfRows:numberOfRows sectionOffset:sectionOffset sectionSize:&sectionSize];
+        [self setFrames:itemFrames forItemsInSection:section numberOfRows:numberOfRows sectionOffset:sectionOffset sectionSize:&sectionSize];
         
         CGSize footerSize = [self referenceSizeForFooterInSection:section];
         CGRect footerFrame;
