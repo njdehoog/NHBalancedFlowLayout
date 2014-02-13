@@ -214,6 +214,12 @@
     } else if ([kind isEqualToString:UICollectionElementKindSectionFooter]) {
         attributes.frame = [self footerFrameForSection:indexPath.section];
     }
+    
+    if(CGRectIsEmpty(attributes.frame))
+    {
+        attributes = nil;
+    }
+    
     return attributes;
 }
 
@@ -378,41 +384,6 @@
 - (void)setPreferredRowSize:(CGFloat)preferredRowHeight
 {
     _preferredRowSize = preferredRowHeight;
-    
-    [self invalidateLayout];
-}
-
-- (void)setSectionInset:(UIEdgeInsets)sectionInset
-{
-    _sectionInset = sectionInset;
-    
-    [self invalidateLayout];
-}
-
-- (void)setMinimumLineSpacing:(CGFloat)minimumLineSpacing
-{
-    _minimumLineSpacing = minimumLineSpacing;
-    
-    [self invalidateLayout];
-}
-
-- (void)setMinimumInteritemSpacing:(CGFloat)minimumInteritemSpacing
-{
-    _minimumInteritemSpacing = minimumInteritemSpacing;
-    
-    [self invalidateLayout];
-}
-
-- (void)setHeaderReferenceSize:(CGSize)headerReferenceSize
-{
-    _headerReferenceSize = headerReferenceSize;
-    
-    [self invalidateLayout];
-}
-
-- (void)setFooterReferenceSize:(CGSize)footerReferenceSize
-{
-    _footerReferenceSize = footerReferenceSize;
     
     [self invalidateLayout];
 }
