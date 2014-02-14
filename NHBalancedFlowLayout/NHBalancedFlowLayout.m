@@ -215,6 +215,7 @@
         attributes.frame = [self footerFrameForSection:indexPath.section];
     }
     
+    // If there is no header or footer, we need to return nil to prevent a crash from UICollectionView private methods.
     if(CGRectIsEmpty(attributes.frame))
     {
         attributes = nil;
@@ -384,6 +385,41 @@
 - (void)setPreferredRowSize:(CGFloat)preferredRowHeight
 {
     _preferredRowSize = preferredRowHeight;
+    
+    [self invalidateLayout];
+}
+
+- (void)setSectionInset:(UIEdgeInsets)sectionInset
+{
+    _sectionInset = sectionInset;
+    
+    [self invalidateLayout];
+}
+
+- (void)setMinimumLineSpacing:(CGFloat)minimumLineSpacing
+{
+    _minimumLineSpacing = minimumLineSpacing;
+    
+    [self invalidateLayout];
+}
+
+- (void)setMinimumInteritemSpacing:(CGFloat)minimumInteritemSpacing
+{
+    _minimumInteritemSpacing = minimumInteritemSpacing;
+    
+    [self invalidateLayout];
+}
+
+- (void)setHeaderReferenceSize:(CGSize)headerReferenceSize
+{
+    _headerReferenceSize = headerReferenceSize;
+    
+    [self invalidateLayout];
+}
+
+- (void)setFooterReferenceSize:(CGSize)footerReferenceSize
+{
+    _footerReferenceSize = footerReferenceSize;
     
     [self invalidateLayout];
 }

@@ -16,11 +16,30 @@
  * Currently this class does not support supplementary or decoration views.
  *
  */
-@interface NHBalancedFlowLayout : UICollectionViewFlowLayout
+@interface NHBalancedFlowLayout : UICollectionViewLayout
 
 // The preferred size for each row measured in the scroll direction
 @property (nonatomic) CGFloat preferredRowSize;
 
+// The size of each section's header. This maybe dynamically adjusted
+// per section via the protocol method referenceSizeForHeaderInSection.
+@property (nonatomic) CGSize headerReferenceSize;
+
+// The size of each section's header. This maybe dynamically adjusted
+// per section via the protocol method referenceSizeForFooterInSection.
+@property (nonatomic) CGSize footerReferenceSize;
+
+// The margins used to lay out content in a section.
+@property (nonatomic) UIEdgeInsets sectionInset;
+
+// The minimum spacing to use between lines of items in the grid.
+@property (nonatomic) CGFloat minimumLineSpacing;
+
+// The minimum spacing to use between items in the same row.
+@property (nonatomic) CGFloat minimumInteritemSpacing;
+
+// The scroll direction of the grid.
+@property (nonatomic) UICollectionViewScrollDirection scrollDirection;
 
 @end
 
