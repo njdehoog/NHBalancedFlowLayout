@@ -216,8 +216,7 @@
     }
     
     // If there is no header or footer, we need to return nil to prevent a crash from UICollectionView private methods.
-    if(CGRectIsEmpty(attributes.frame))
-    {
+    if(CGRectIsEmpty(attributes.frame)) {
         attributes = nil;
     }
     
