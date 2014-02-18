@@ -17,7 +17,7 @@ UICollectionViewLayout subclass for displaying items of different sizes in a gri
 
 The easiest way is to use CocoaPods. If you don't already, here's a [guide](http://guides.cocoapods.org/using/getting-started.html).
 
-	pod 'NHBalancedFlowLayout', '~> 0.1.2'
+	pod 'NHBalancedFlowLayout', '~> 0.2'
 
 If you don't use CocoaPods, you'll need to copy the following files into your project:
 
