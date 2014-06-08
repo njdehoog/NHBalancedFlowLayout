@@ -7,7 +7,9 @@
 //
 
 #import "NHBalancedFlowLayout.h"
-#import "NHLinearPartition.h"
+
+// Swift header, see: https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/BuildingCocoaApps/MixandMatch.html
+#import "NHBalancedFlowLayoutDemo-Swift.h"
 
 @interface NHBalancedFlowLayout ()
 {
@@ -282,7 +284,7 @@
 - (void)setFrames:(CGRect *)frames forItemsInSection:(NSInteger)section numberOfRows:(NSUInteger)numberOfRows sectionOffset:(CGPoint)sectionOffset sectionSize:(CGSize *)sectionSize
 {
     NSArray *weights = [self weightsForItemsInSection:section];
-    NSArray *partition = [NHLinearPartition linearPartitionForSequence:weights numberOfPartitions:numberOfRows];
+    NSArray *partition = [SWLinearPartition linearPartitionForSequence:weights numberOfPartitions:numberOfRows];
     
     int i = 0;
     CGPoint offset = CGPointMake(sectionOffset.x + self.sectionInset.left, sectionOffset.y + self.sectionInset.top);

@@ -8,7 +8,6 @@
 
 #import "ViewController.h"
 #import "ImageCell.h"
-#import "NHLinearPartition.h"
 #import "UIImage+Decompression.h"
 #import "NHBalancedFlowLayout.h"
 
