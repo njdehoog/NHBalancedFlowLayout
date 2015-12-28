@@ -3,6 +3,8 @@ NHBalancedFlowLayout
 
 UICollectionViewLayout subclass for displaying items of different sizes in a grid without wasting any visual space. Inspired by: http://www.crispymtn.com/stories/the-algorithm-for-a-perfectly-balanced-photo-gallery
 
+__This project is no longer maintained. For a more up-to-date version, check out: https://github.com/graetzer/NHBalancedFlowLayout__
+
 ## Notes 
 * Tested with iOS 7, but should be compatible with iOS6 as well
 * Works with iPhone and iPad
